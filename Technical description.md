@@ -7,7 +7,7 @@
 Contains informations about cars: 
 
 + car Id,
-+ car Licenseplate number (3 letters, 3 numbers),
++ car Licenseplate number (3 uppercase letters, 3 numbers),
 + car type,
 + year manufactured,
 + color
