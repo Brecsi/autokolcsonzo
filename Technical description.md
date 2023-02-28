@@ -2,7 +2,7 @@
 
 ## Table descriptions: 
 
-# cars table: 
+ cars table: 
 
 Contains informations about cars: 
 
