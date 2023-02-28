@@ -54,7 +54,7 @@ CREATE TABLE autokolcsonzo.loans (
   id int(11) NOT NULL,
   loanId int(11) DEFAULT NULL,
   carId int(11) DEFAULT NULL,
-  loanStart datetime NOT NULL,
+  loanStart date NOT NULL,
   numberOfDays int(11) DEFAULT NULL,
   dailyRate decimal(10, 0) NOT NULL,
   PRIMARY KEY (id)
