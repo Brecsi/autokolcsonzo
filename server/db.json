@@ -1,0 +1,41 @@
+{
+    "user": 
+    [
+        {
+            "id":1,
+            "firstName": "Nagy",
+            "lastName": "Károly",
+            "gender": "1",
+            "userName": "Nagy Károly",
+            "email": "karoly.nagy@gmail.com",
+            "password": "nagykaroly123",
+            "number": "Tulajdonos",
+            "status": "Active",
+            "img": "https://images.unsplash.com/photo-1677184460769-97b6633d3e09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        },
+        {
+            "id":2,
+            "firstName": "Kiss",
+            "lastName": "Kata",
+            "gender": "0",
+            "userName": "Kiss Kata",
+            "email": "kata.kiss@gmail.com",
+            "password": "kisskata123",
+            "number": "Adminisztrátor",
+            "status": "Inactive",
+            "img": "https://images.unsplash.com/photo-1677235050797-e3ba4b355a38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        },
+        {
+            "id":3,
+            "firstName": "Fekete",
+            "lastName": "Zoltán",
+            "gender": "1",
+            "userName": "Fekete Zoltán",
+            "email": "fekete.zoltan@gmail.com",
+            "password": "feketezoltan123",
+            "number": "Adminisztrátor",
+            "status": "Active",
+            "img": "https://images.unsplash.com/photo-1677189965688-1c8c992f029d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfHRvd0paRnNrcEdnfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        }
+    ]
+}
