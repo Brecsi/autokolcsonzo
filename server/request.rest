@@ -174,3 +174,9 @@ Content-Type: application/json
     "date": "2022.10.13 01:35:00",
     "carId": 2
 }
+
+
+
+###--------------------------------
+### get renters
+get http://localhost:3000/renters

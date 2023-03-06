@@ -594,6 +594,29 @@ app.put("/trips/:id", (req, res) => {
 });
 //#endregion trips
 
+//#region renters
+
+app.get("/renters", (req, res) => {
+  let sql = `
+  select * from renters
+  `;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+
+    connection.query(sql, function (error, results, fields) {
+      sendingGet(res, error, results);
+    });
+
+    connection.release();
+  });
+});
+
+//#endregion renters
+
 function mySanitizeHtml(data) {
   return sanitizeHtml(data, {
     allowedTags: [],

@@ -16,4 +16,9 @@ select * from users;
 
 -- 70-es telefonszámmal rendelkezõ bérlõk
   select name, phone from renters
-  where phone HAVING '0670';
+  where phone LIKE '%70%';
+
+
+ # get http://localhost:3000/renters
+
+select * from renters;
