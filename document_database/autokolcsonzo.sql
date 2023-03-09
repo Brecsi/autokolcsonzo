@@ -19,6 +19,8 @@ select * from users;
   where phone LIKE '%70%';
 
 
+CALL autoberlesGen();
+
  # get http://localhost:3000/renters
 
 select * from renters;
