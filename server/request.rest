@@ -1,0 +1,18 @@
+### ---------------------------------------
+### get cars
+get http://localhost:3000/cars
+
+### get cars with loans (nosql)
+get http://localhost:3000/carsWithLoans
+
+### get carsLoans (inner join)
+get http://localhost:3000/carsLoans
+
+### get car by id (csak a car tábla)
+get http://localhost:3000/cars/9
+
+### get car by id (csak a car tábla)
+get http://localhost:3000/carsWithLoans/3
+
+### get car és trips innercoin
+get http://localhost:3000/carsTrips/2
