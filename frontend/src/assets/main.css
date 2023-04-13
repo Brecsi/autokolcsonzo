@@ -1,0 +1,16 @@
+.my-container {
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.my-width-100 {
+  width: 100px;
+}
+
+
+body {
+  background-image: url(../../public/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
