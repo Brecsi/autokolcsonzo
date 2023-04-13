@@ -279,7 +279,7 @@ function getLoans(res, carId) {
         //Végigmegyünk a kocsikon, és berakjuk a trips-eket
         for (const car of results) {
           //A promise a results-ot ada vissza
-          car.trips = await getLoans(res, car.id);
+          car.loans = await getLoans(res, car.id);
         }
         sendingGet(res, null, results);
       });
@@ -289,7 +289,7 @@ function getLoans(res, carId) {
   
   //Cars és Loans táblák inner join
   app.get("/carsLoans", (req, res) => {
-    let sql = `SELECT id, license, type, year color FROM cars
+    let sql = `SELECT * FROM cars
     inner join loans on cars.id = loans.carId
     WHERE id = ?`;
   
@@ -362,7 +362,7 @@ function getLoans(res, carId) {
           sendingGetError(res, message);
           return;
         }
-        results[0].trips = await getLoans(res, id);
+        results[0].loans = await getLoans(res, id);
         sendingGetById(res, null, results[0], id);
       });
       connection.release();
@@ -373,7 +373,7 @@ function getLoans(res, carId) {
   app.get("/carsLoans/:id", (req, res) => {
     const id = req.params.id;
     let sql = `
-    select c.id, c.license, c.type, c.year, c.color from cars c
+    select * from cars c
     inner join loans l on c.id = l.carId
     where c.id = ?`;
   
@@ -421,8 +421,8 @@ function getLoans(res, carId) {
   
   app.post("/cars", (req, res) => {
     const newR = {
-      id: sanitizeHtml(req.body.id),
-      license: sanitizeHtml(req.body.license),
+      id: req.body.id,
+      license: req.body.license,
       type: req.body.type,
       year: req.body.year,
       color: req.body.color,
@@ -452,7 +452,7 @@ function getLoans(res, carId) {
   app.put("/cars/:id", (req, res) => {
     const id = req.params.id;
     const newR = {
-      license: sanitizeHtml(req.body.license),
+      license: req.body.license,
       type: req.body.type,
       year: req.body.year,
       color: req.body.color,

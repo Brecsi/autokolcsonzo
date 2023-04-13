@@ -15,4 +15,20 @@ get http://localhost:3000/cars/9
 get http://localhost:3000/carsWithLoans/3
 
 ### get car és trips innercoin
-get http://localhost:3000/carsTrips/2
+get http://localhost:3000/carsLoans/2
+
+### ---------------------------------------
+### get users
+get http://localhost:3000/users
+
+###
+get http://localhost:3000/loans
+
+### login
+post http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "userName": "brecsi",
+    "password": "123"
+}

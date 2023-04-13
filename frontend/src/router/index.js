@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         requiresAuth: false,
-        title: "Home / Taxi",
+        title: "Home / Autókölcsönző",
       },
     },
     {
@@ -22,16 +22,16 @@ const router = createRouter({
       component: () => import("../views/AboutView.vue"),
       meta: {
         requiresAuth: false,
-        title: "About / Taxi",
+        title: "About / Autókölcsönző",
       },
     },
     {
-      path: "/taxiFuvarjai",
-      name: "taxiFuvarjai",
-      component: () => import("../views/TaxiFuvarjaiView.vue"),
+      path: "/kolcsonzesek",
+      name: "kolcsonzesek",
+      component: () => import("../views/KolcsonzesekView.vue"),
       meta: {
         requiresAuth: false,
-        title: "Taxi fuvarjai / Taxi",
+        title: "Kölcsönzések / Autókölcsönző",
       },
     },
     {
@@ -39,8 +39,8 @@ const router = createRouter({
       name: "taxiKezeles",
       component: () => import("../views/TaxiKezelesView.vue"),
       meta: {
-        requiresAuth: true,
-        title: "Taxi Kezelés / Taxi",
+        requiresAuth: false,
+        title: "Taxi Kezelés / Autókölcsönző",
       },
     },
     {
@@ -48,8 +48,8 @@ const router = createRouter({
       name: "fuvarBevitel",
       component: () => import("../views/FuvarBevitel.vue"),
       meta: {
-        requiresAuth: true,
-        title: "Fuvar bevitel / Taxi",
+        requiresAuth: false,
+        title: "Fuvar bevitel / Autókölcsönző",
       },
     },
     {
@@ -59,6 +59,15 @@ const router = createRouter({
       meta: {
         requiresAuth: false,
         title: "Counter 1 / Taxi",
+      },
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: () => import("../views/AdminPanelView.vue"),
+      meta: {
+        requiresAuth: false,
+        title: "Admin Panel / Autókölcsönző",
       },
     },
     {
@@ -76,7 +85,7 @@ const router = createRouter({
       component: () => import("../views/LoginView.vue"),
       meta: {
         requiresAuth: false,
-        title: "Login / Taxi",
+        title: "Login / Autókölcsönző",
       },
     },
     {
@@ -85,7 +94,7 @@ const router = createRouter({
       component: () => import("../views/404View.vue"),
       meta: {
         requiresAuth: false,
-        title: "404 / Taxi",
+        title: "404 / Autókölcsönző",
       },
     },
   ],

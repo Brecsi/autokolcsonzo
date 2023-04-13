@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/"
         @click="onClickMenu(1)"
-      >Taxi</router-link>
+      >Home</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,13 +17,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/"
-            :class="{active: menuState === 2}"
-            @click="onClickMenu(2)"
-              >Home</router-link
-            >
-          </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/about"
             :class="{active: menuState === 3}"
@@ -40,24 +33,26 @@
               :class="{active: menuState === 4}"
               @click="onClickMenu(4)"
             >
-              Taxiállomás
+              Management
             </a>
             <ul class="dropdown-menu">
               <li>
-                <router-link class="dropdown-item" to="/taxiFuvarjai"
-                  >Taxi és fuvarjai</router-link
+                <router-link class="dropdown-item" to="/kolcsonzesek"
+                  >Kölcsönzések</router-link
                 >
               </li>
-              <li><hr class="dropdown-divider" /></li>
               <li>
-                <router-link class="dropdown-item" to="/taxiKezeles"
-                  :class="{ disabled: !storeLogin.loginSuccess }"
-                  >Taxik kezelése</router-link
+                <router-link class="dropdown-item" to="/taxiKezeles">Taxik kezelése</router-link
                 >
               </li>
               <li>
                 <router-link class="dropdown-item" to="/fuvarBevitel"
                   >Fuvar bevitel</router-link
+                >
+              </li>
+              <li>
+                <router-link class="dropdown-item" to="/admin"
+                  >Admin panel</router-link
                 >
               </li>
             </ul>
@@ -152,10 +147,8 @@ function onClickMenu(number){
 </script>
 
 <style>
-/* .router-link-active {
-  color: white !important
+.router-link-active {
+  /* color: white !important */
 }
 
-.navbar-nav > li > .dropdown-menu a:link,
-.navbar-nav > li > .dropdown-menu a:hover { background-color: black} */
 </style>

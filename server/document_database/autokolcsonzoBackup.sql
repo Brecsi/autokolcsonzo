@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS loans (
   id INT(11) NOT NULL,
   loanId INT(11) DEFAULT NULL,
   carId INT(11) DEFAULT NULL,
-  loanStart DATETIME NOT NULL,
+  loanStart DATE NOT NULL,
   numberOfDays INT(11) DEFAULT NULL,
   dailyRate DECIMAL(10, 0) NOT NULL,
   PRIMARY KEY (id)
@@ -130,10 +130,10 @@ INSERT INTO users VALUES
 -- Dumping data for table loans
 --
 INSERT INTO loans VALUES
-(1, 1, 3, '2023-01-05 00:00:00', 21, 25000),
-(2, 4, 2, '2023-02-10 00:00:00', NULL, 13000),
-(3, 8, 1, '2022-12-22 00:00:00', NULL, 17500),
-(4, 5, 5, '2022-12-10 00:00:00', 40, 11500);
+(1, 1, 3, '2023-01-05', 21, 25000),
+(2, 4, 2, '2023-02-10', NULL, 13000),
+(3, 8, 1, '2022-12-22', NULL, 17500),
+(4, 5, 5, '2022-12-10', 40, 11500);
 
 -- 
 -- Dumping data for table loaners

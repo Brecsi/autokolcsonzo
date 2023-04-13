@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <h1>Taxi kezelés</h1>
+    <h1>Kölcsönzések kezelése</h1>
 
     <!--#region táblázat -->
     <table class="table table-bordered table-hover w-auto">
@@ -14,20 +14,21 @@
               class="btn btn-outline-success btn-sm"
               @click="onClickNew()"
             >
-              Új autó
+              Új kölcsönzés
             </button>
           </th>
-          <th>Autó márka</th>
+          <th>Gyártási év</th>
+          <th>Típus</th>
           <th>Rendszám</th>
-          <th>Tarifa (Ft/óra)</th>
-          <th>Vezető</th>
-          <th>Forgalmon kívül</th>
+          <th>Napi díj</th>
+          <th>Kölcsönzés dátuma</th>
+          <th>Napok száma</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="(car, index) in cars"
+          :key="`car${index}`">
         <tr
-          v-for="(car, index) in cars"
-          :key="`car${index}`"
+          v-for="(loan, index) in car.loans" :key="`loan${index}`"
           :class="currentRowBackground(car.id)"
           @click="onClikRow(car.id)"
         >
@@ -50,19 +51,12 @@
               <i class="bi bi-pencil-fill"></i>
             </button>
           </td>
-          <td>{{ car.name }}</td>
-          <td>{{ car.licenceNumber }}</td>
-          <td>{{ car.hourlyRate }}</td>
-          <td>{{ car.driverName }}</td>
-          <td>
-            <input
-              class="form-check-input"
-              disabled
-              type="checkbox"
-              :id="`cb${index}`"
-              v-model="car.outOfTraffic"
-            />
-          </td>
+          <td>{{ car.year }}</td>
+          <td>{{ car.type }}</td>
+          <td>{{ car.license }}</td>
+          <td>{{ car.dailyRate }}</td>
+          <td>{{ loan.loanStart}}</td>
+          <td>{{ loan.numberOfDays }}</td>
         </tr>
       </tbody>
     </table>
@@ -97,45 +91,45 @@
             <form class="row g-3 needs-validation" novalidate>
               <!-- Autó név -->
               <div class="col-md-12">
-                <label for="name" class="form-label">Autó név</label>
+                <label for="year" class="form-label">Gyártási év</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="year"
                   required
-                  v-model="editableCar.name"
+                  v-model="editableCar.year"
                 />
-                <div class="invalid-feedback">A név kitöltése kötelező</div>
+                <div class="invalid-feedback">A gyártási év kitöltése kötelező</div>
               </div>
 
               <!-- Rendszám -->
               <div class="col-md-6">
-                <label for="licenceNumber" class="form-label">Rendszám</label>
+                <label for="type" class="form-label">Típus</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="licenceNumber"
+                  id="type"
                   required
-                  v-model="editableCar.licenceNumber"
+                  v-model="editableCar.type"
                 />
                 <div class="invalid-feedback">
-                  A rendszám kitöltése kötelező
+                  A típus megadása kötelező
                 </div>
               </div>
 
               <!-- Rendszám -->
               <div class="col-md-6">
-                <label for="hourlyRate" class="form-label"
-                  >Tarifa (Ft/óra)</label
+                <label for="license" class="form-label"
+                  >Rendszám</label
                 >
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
-                  id="hourlyRate"
+                  id="license"
                   required
-                  v-model="editableCar.hourlyRate"
+                  v-model="editableCar.license"
                 />
-                <div class="invalid-feedback">A tarifa kitöltése kötelező</div>
+                <div class="invalid-feedback">A rendszám kitöltése kötelező</div>
               </div>
 
               <!-- out of traffic -->

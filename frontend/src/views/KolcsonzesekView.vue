@@ -1,14 +1,15 @@
 
 <template>
   <div>
-    <h1>Taxi fuvarjai</h1>
-    <div v-for="(car, index) in carsWithTrips" :key="`car${index}`">
-      <h2>
-        {{ car.name }} ({{ car.licenceNumber }}) {{ car.licenceNumber }} Ft/óra
-      </h2>
+    <h1>Kölcsönzések</h1>
+
+    <div v-for="(car, index) in carsWithLoans" :key="`car${index}`">
+      <p>
+        {{ car.year }} {{ car.type }} ( {{ car.license }} ) 
+      </p>
       <ul>
-        <li v-for="(trip, index) in car.trips" :key="`trip${index}`">
-          {{ trip.date }}: {{ trip.numberOfMinits }} perc
+        <li v-for="(loan, index) in car.loans" :key="`loans${index}`">
+          {{ loan.loanStart }}, {{ loan.numberOfDays }}, {{ loan.dailyRate }}
         </li>
       </ul>
     </div>
@@ -25,15 +26,15 @@ export default {
     return {
       storeUrl,
       storeLogin,
-      carsWithTrips: [],
+      carsWithLoans: [],
     };
   },
   mounted() {
-    this.getCarsWithTrips();
+    this.getCarsWithLoans();
   },
   methods: {
-    async getCarsWithTrips() {
-      let url = this.storeUrl.urlCarsWithTrips;
+    async getCarsWithLoans() {
+      let url = this.storeUrl.urlCarsWithLoans;
       const config = {
         method: "GET",
         headers: {
@@ -42,7 +43,7 @@ export default {
       };
       const response = await fetch(url, config);
       const data = await response.json();
-      this.carsWithTrips = data.data;
+      this.carsWithLoans = data.data;
     },
   },
 };
