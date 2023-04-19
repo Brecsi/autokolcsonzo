@@ -77,7 +77,7 @@ app.get("/users", (req, res) => {
       gender: mySanitizeHtml(req.body.gender),
       userName: mySanitizeHtml(req.body.userName),
       email: mySanitizeHtml(req.body.email),
-      password: req.body.password,
+      password: mySanitizeHtml(req.body.password),
       number: +mySanitizeHtml(req.body.number),
     };
   

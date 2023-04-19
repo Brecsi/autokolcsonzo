@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <h1>Admin panel</h1>
@@ -15,7 +14,9 @@
               New User
             </button>
           </th>
-          <th>Name</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
           <th>Username</th>
           <th>E-mail</th>
           <th>Status</th>
@@ -43,7 +44,9 @@
               <i class="bi bi-pencil-fill"></i>
             </button>
           </td>
+          <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
+          <td>{{ user.gender }}</td>
           <td>{{ user.userName }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.number }}</td>
@@ -77,15 +80,38 @@
             <!--#region Form -->
 
             <form class="row g-3 needs-validation" novalidate>
-              <!-- Autó név -->
               <div class="col-md-12">
-                <label for="name" class="form-label">Name</label>
+                <label for="firstName" class="form-label">First name</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="firstName"
                   required
-                  v-model="editableUser.name"
+                  v-model="editableUser.firstName"
+                />
+                <div class="invalid-feedback">This field is mandatory</div>
+              </div>
+
+              <div class="col-md-12">
+                <label for="lastName" class="form-label">Last name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  required
+                  v-model="editableUser.lastName"
+                />
+                <div class="invalid-feedback">This field is mandatory</div>
+              </div>
+
+              <div class="col-md-12">
+                <label for="gender" class="form-label">Gender</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="gender"
+                  required
+                  v-model="editableUser.gender"
                 />
                 <div class="invalid-feedback">This field is mandatory</div>
               </div>
@@ -104,22 +130,35 @@
                 </div>
               </div>
 
-              <!-- Rendszám -->
+              
               <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
                 <input
+                type="text"
+                class="form-control"
+                id="email"
+                required
+                v-model="editableUser.email"
+                />
+                <div class="invalid-feedback">
+                  This field is mandatory
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="password" class="form-label">Password</label>
+                <input
                   type="text"
                   class="form-control"
-                  id="email"
+                  id="password"
                   required
-                  v-model="editableUser.email"
+                  v-model="editableUser.password"
                 />
                 <div class="invalid-feedback">
                   This field is mandatory
                 </div>
               </div>
 
-              <!-- Rendszám -->
               <div class="col-md-6">
                 <label for="number" class="form-label"
                   >Status number</label

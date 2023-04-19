@@ -21,13 +21,28 @@ post http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "userName": "Teszt",
+    "userName": "brecsi",
     "password": "123"
 }
 
 
 ### user post
 post http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "firstName": "Miguel",
+    "lastName": "Alvarez",
+    "gender": "male",
+    "userName": "miguel",
+    "email": "miguel.alvarez@gmail.com",
+    "password": "123",
+    "number": 0
+}
+
+
+###put user
+put http://localhost:3000/users
 Content-Type: application/json
 
 {
