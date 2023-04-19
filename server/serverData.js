@@ -424,10 +424,10 @@ function getLoans(res, carId) {
   app.put("/cars/:id", (req, res) => {
     const id = req.params.id;
     const newR = {
-      license: req.body.license,
-      type: req.body.type,
+      license: mySanitizeHtml(req.body.license),
+      type: mySanitizeHtml(req.body.type),
       year: req.body.year,
-      color: req.body.color,
+      color: mySanitizeHtml(req.body.color),
       dailyRate: req.body.dailyRate,
     };
     let sql = `

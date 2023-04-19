@@ -99,7 +99,7 @@ COLLATE utf8_hungarian_ci;
 --
 CREATE TABLE IF NOT EXISTS cars (
   id INT(11) NOT NULL,
-  license VARCHAR(6) NOT NULL,
+  license VARCHAR(7) NOT NULL,
   type VARCHAR(100) NOT NULL,
   year INT(11) DEFAULT NULL,
   color VARCHAR(30) DEFAULT NULL,

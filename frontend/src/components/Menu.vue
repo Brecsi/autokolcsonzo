@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/"
         @click="onClickMenu(1)"
-      >Home</router-link>
+      >Kezdőlap</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -21,7 +21,7 @@
             <router-link class="nav-link" to="/about"
             :class="{active: menuState === 3}"
             @click="onClickMenu(3)"
-            >About</router-link>
+            >Információk</router-link>
           </li>
           <li class="nav-item dropdown">
             <a

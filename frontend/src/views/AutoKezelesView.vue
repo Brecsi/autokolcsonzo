@@ -4,7 +4,7 @@
     <h1>Autók Kezelése</h1>
 
     <!--#region táblázat -->
-    <table class="table table-bordered table-hover table-dark">
+    <table class="table table-bordered table-hover table-dark ">
       <thead>
         <tr>
           <th>
@@ -14,13 +14,14 @@
               class="btn btn-success btn-sm"
               @click="onClickNew()"
             >
-              Új autó
+              New car
             </button>
           </th>
-          <th>Gyártási év</th>
-          <th>Típus</th>
-          <th>Rendszám</th>
-          <th>Napi díj</th>
+          <th>Manufacture year</th>
+          <th>Type (brand, model)</th>
+          <th>Color</th>
+          <th>Licence number</th>
+          <th>Daily rate</th>
         </tr>
       </thead>
       <tbody v-for="(car, index) in cars"
@@ -50,6 +51,7 @@
           </td>
           <td>{{ car.year }}</td>
           <td>{{ car.type }}</td>
+          <td>{{ car.color }}</td>
           <td>{{ car.license }}</td>
           <td>{{ car.dailyRate }}</td>
         </tr>
@@ -86,7 +88,7 @@
             <form class="row g-3 needs-validation" novalidate>
               <!-- Autó név -->
               <div class="col-md-12">
-                <label for="year" class="form-label">Gyártási év</label>
+                <label for="year" class="form-label">Manufacture year</label>
                 <input
                   type="text"
                   class="form-control"
@@ -94,11 +96,11 @@
                   required
                   v-model="editableCar.year"
                 />
-                <div class="invalid-feedback">A gyártási év kitöltése kötelező</div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
               <div class="col-md-6">
-                <label for="color" class="form-label">Szín</label>
+                <label for="color" class="form-label">Color</label>
                 <input
                   type="text"
                   class="form-control"
@@ -107,13 +109,13 @@
                   v-model="editableCar.color"
                 />
                 <div class="invalid-feedback">
-                  A szín megadása kötelező
+                  This field is mandatory
                 </div>
               </div>
 
               <!-- Rendszám -->
               <div class="col-md-6">
-                <label for="type" class="form-label">Típus</label>
+                <label for="type" class="form-label">Type (brand, model)</label>
                 <input
                   type="text"
                   class="form-control"
@@ -122,14 +124,14 @@
                   v-model="editableCar.type"
                 />
                 <div class="invalid-feedback">
-                  A típus megadása kötelező
+                  This field is mandatory
                 </div>
               </div>
 
               <!-- Rendszám -->
               <div class="col-md-6">
                 <label for="license" class="form-label"
-                  >Rendszám</label
+                  >Licence number</label
                 >
                 <input
                   type="text"
@@ -138,10 +140,10 @@
                   required
                   v-model="editableCar.license"
                 />
-                <div class="invalid-feedback">A rendszám kitöltése kötelező</div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
               <div class="col-md-6">
-                <label for="dailyRate">Napi díj</label>
+                <label for="dailyRate">Daily rate</label>
                 <input type="number" class="form-control" id="dailyRate" required v-model="editableCar.dailyRate">
               </div>
             </form>
@@ -340,9 +342,9 @@ export default {
   computed: {
     stateTitle() {
       if (this.state === "new") {
-        return "Új autó bevitele";
+        return "New car";
       } else if (this.state === "edit") {
-        return "Autó módosítása";
+        return "Edit car";
       }
     },
   },
@@ -354,5 +356,6 @@ export default {
 .my-bg-current-row {
   background-color: lightgrey;
 }
+
 
 </style>

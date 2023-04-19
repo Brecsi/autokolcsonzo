@@ -6,7 +6,7 @@ select * from loans;
 select * from users;
 
 
-
+delete from users;
 
 delete from loans;
 
