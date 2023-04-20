@@ -457,7 +457,43 @@ function getLoans(res, carId) {
   });
   //#endregion cars
   
+//#region loans
 
+app.get("/loans", (req, res) => {
+  let sql = `SELECT * FROM loans`;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(sql, async function (error, results, fields) {
+      sendingGet(res, error, results);
+    });
+    connection.release();
+  });
+});
+
+app.get("/loans/:id", (req, res) => {
+  const id = req.params.id;
+  let sql = `
+    SELECT * FROM loans
+    WHERE id = ?`;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(sql, [id], async function (error, results, fields) {
+      sendingGetById(res, error, results, id);
+    });
+    connection.release();
+  });
+});
+
+
+//#endregion loans
 
 
 

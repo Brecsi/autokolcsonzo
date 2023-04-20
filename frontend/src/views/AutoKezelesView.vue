@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <h1>Autók Kezelése</h1>
+    <h1>Manage Cars</h1>
 
     <!--#region táblázat -->
     <table class="table table-bordered table-hover table-dark ">

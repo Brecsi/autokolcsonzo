@@ -11,10 +11,12 @@ get http://localhost:3000/cars/0
 ### get car by id (csak a car tábla)
 get http://localhost:3000/carsWithLoans/3
 ### get users
-get http://localhost:3000/users/
+get http://localhost:3000/users
 
 ###
 get http://localhost:3000/loans
+###
+get http://localhost:3000/loans/5
 
 ### login
 post http://localhost:4000/login
@@ -60,11 +62,11 @@ post http://localhost:3000/cars
 Content-Type: application/json
 
 {
-    "license": "BBB-314",
-    "type": "Volkswagen",
-    "year": 2005,
-    "color": "Black",
-    "dailyRate": 25000
+    "license": "GRZ-685",
+    "type": "Ford Focus",
+    "year": 2019,
+    "color": "Grey",
+    "dailyRate": 22500
 }
 
 ###put car
@@ -72,9 +74,9 @@ put http://localhost:3000/cars/0
 Content-Type: application/json
 
 {
-    "license": "KYS-420",
-    "type": "Mercedes AMG",
+    "license": "GRZ-685",
+    "type": "Ford Focus",
     "year": 2019,
-    "color": "Yellow",
-    "dailyRate": 44500
+    "color": "Grey",
+    "dailyRate": 22500
 }
