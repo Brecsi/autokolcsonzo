@@ -241,7 +241,7 @@ function getLoans(res, carId) {
   
   //Csak a cars tábla
   app.get("/cars", (req, res) => {
-    let sql = `SELECT id, license, type, year, color, dailyRate FROM cars`;
+    let sql = `SELECT * FROM cars`;
   
     pool.getConnection(function (error, connection) {
       if (error) {
@@ -261,7 +261,7 @@ function getLoans(res, carId) {
   });
 
   app.get("/carsByYear", (req, res) => {
-    let sql = `SELECT id, license, type, year, color, dailyRate FROM cars ORDER BY year`;
+    let sql = `SELECT * FROM cars ORDER BY year`;
   
     pool.getConnection(function (error, connection) {
       if (error) {
@@ -282,7 +282,7 @@ function getLoans(res, carId) {
   
   //Cars a Trip-jeivel
   app.get("/carsWithLoans", (req, res) => {
-    let sql = `SELECT id, license, type, year, color, dailyRate FROM cars`;
+    let sql = `SELECT * FROM cars`;
   
     pool.getConnection(function (error, connection) {
       if (error) {
@@ -412,10 +412,10 @@ function getLoans(res, carId) {
   
   app.post("/cars", (req, res) => {
     const newR = {
-      license: req.body.license,
-      type: req.body.type,
+      license: mySanitizeHtml(req.body.license),
+      type: mySanitizeHtml(req.body.type),
       year: req.body.year,
-      color: req.body.color,
+      color: mySanitizeHtml(req.body.color),
       dailyRate: req.body.dailyRate,
     };
     console.log(newR);

@@ -14,9 +14,7 @@ const storeCounter = useCounterStore();
 </script>
 
 <style>
-h1, p{
-  text-align: center;
-}
+
 
 ul {
   display: flex;

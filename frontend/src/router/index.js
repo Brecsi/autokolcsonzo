@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         requiresAuth: false,
-        title: "Home / Autókölcsönző",
+        title: "Home / Junkie Rental",
       },
     },
     {
@@ -19,7 +19,7 @@ const router = createRouter({
       component: () => import("@/views/AboutView.vue"),
       meta: {
         requiresAuth: false,
-        title: "About / Autókölcsönző",
+        title: "About / Junkie Rental",
       },
     },
 
@@ -31,7 +31,7 @@ const router = createRouter({
       component: () => import("@/views/KolcsonzesekView.vue"),
       meta: {
         requiresAuth: true,
-        title: "Kölcsönzések / Autókölcsönző",
+        title: "Rents / Junkie Rental",
       },
     },
     {
@@ -40,7 +40,7 @@ const router = createRouter({
       component: () => import("@/views/AutoKezelesView.vue"),
       meta: {
         requiresAuth: true,
-        title: "Autó Kezelés / Autókölcsönző",
+        title: "Manage Cars / Junkie Rental",
       },
     },
     {
@@ -49,7 +49,25 @@ const router = createRouter({
       component: () => import("@/views/CarsView.vue"),
       meta: {
         requiresAuth: false,
-        title: "Autók / Autókölcsönző",
+        title: "Cars / Junkie Rental",
+      }
+    },
+    {
+      path: "/faq",
+      name: "faq",
+      component: () => import("@/views/FAQView.vue"),
+      meta: {
+        requiresAuth: false,
+        title: "FAQ / Junkie Rental",
+      }
+    },
+    {
+      path: "/help",
+      name: "help",
+      component: () => import("@/views/HelpView.vue"),
+      meta: {
+        requiresAuth: false,
+        title: "Help / Junkie Rental",
       }
     },
     {
@@ -61,7 +79,7 @@ const router = createRouter({
       component: () => import("@/views/kolcsonzokView.vue"),
       meta: {
         requiresAuth: true,
-        title: "Kölcsönzők / Autókölcsönző",
+        title: "Renters / Junkie Rental",
       },
     },
     {
@@ -70,7 +88,7 @@ const router = createRouter({
       component: () => import("@/views/FuvarBevitel.vue"),
       meta: {
         requiresAuth: true,
-        title: "Fuvar bevitel / Autókölcsönző",
+        title: "Register Rent / Junkie Rental",
       },
     },
     {
@@ -88,7 +106,7 @@ const router = createRouter({
       component: () => import("@/views/AdminPanelView.vue"),
       meta: {
         requiresAuth: true,
-        title: "Admin Panel / Autókölcsönző",
+        title: "Admin Panel / Junkie Rental",
       },
     },
     {
@@ -106,7 +124,7 @@ const router = createRouter({
       component: () => import("@/views/LoginView.vue"),
       meta: {
         requiresAuth: false,
-        title: "Login / Autókölcsönző",
+        title: "Login / Junkie Rental",
       },
     },
     {
@@ -115,7 +133,7 @@ const router = createRouter({
       component: () => import("../views/404View.vue"),
       meta: {
         requiresAuth: false,
-        title: "404 / Autókölcsönző",
+        title: "404 / Junkie Rental",
       },
     },
   ],

@@ -71,11 +71,11 @@ post http://localhost:3000/cars
 Content-Type: application/json
 
 {
-    "license": "GRZ-685",
-    "type": "Ford Focus",
-    "year": 2019,
-    "color": "Grey",
-    "dailyRate": 22500
+    "license": "JPC-440",
+    "type": "Volkswagen Touran",
+    "year": "2006",
+    "color": "Black",
+    "dailyRate": 12500
 }
 
 ###put car

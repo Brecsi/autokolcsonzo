@@ -17,6 +17,7 @@
               New car
             </button>
           </th>
+          <th>Edit</th>
           <th @click="sort('year')">Manufacture year</th>
           <th @click="sort('type')">Type (brand, model)</th>
           <th @click="sort('color')">Color</th>
@@ -37,9 +38,12 @@
             </button>
 
             <!-- módosítás -->
+            
+          </td>
+          <td>
             <button
               type="button"
-              class="btn btn-primary btn-sm ms-2"
+              class="btn btn-primary btn-sm ms-2 w-auto"
               @click="onClickEdit(car.id)"
             >
               <i class="bi bi-pencil-fill"></i>
@@ -59,7 +63,7 @@
       <th>
         <button class="btn btn-dark btn-sm" @click="nextPage">Next</button>
       </th>
-    debug: sort = {{ currentSort }}, dir = {{ currentSortDir }}, page =
+    page
     {{ currentPage }}
     <!--#endregion táblázat -->
 

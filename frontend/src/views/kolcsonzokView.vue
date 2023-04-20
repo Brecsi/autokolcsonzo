@@ -9,6 +9,7 @@
               New loaner
             </button>
           </th>
+          <th>Edit</th>
           <th @click="sort('name')">Name</th>
           <th @click="sort('licenseNum')">License number</th>
           <th @click="sort('phoneNum')">Phone number</th>
@@ -23,10 +24,15 @@
             </button>
 
             <!-- módosítás -->
-            <button type="button" class="btn btn-primary btn-sm ms-2" @click="onClickEdit(loaner.id)">
-              <i class="bi bi-pencil-fill"></i>
-            </button>
+            
           </td>
+          <td><button
+              type="button"
+              class="btn btn-primary btn-sm ms-2 w-auto"
+              @click="onClickEdit(car.id)"
+            >
+              <i class="bi bi-pencil-fill"></i>
+            </button></td>
           <td>{{ loaner.name }}</td>
           <td>{{ loaner.licenseNum }}</td>
           <td>+36{{ loaner.phoneNum }}</td>

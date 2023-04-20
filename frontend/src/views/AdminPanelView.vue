@@ -14,6 +14,7 @@
               New User
             </button>
           </th>
+          <th>Edit</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Gender</th>
@@ -35,11 +36,12 @@
               <i class="bi bi-trash3-fill"></i>
             </button>
 
-            <!-- módosítás -->
+          </td>
+          <td>
             <button
               type="button"
-              class="btn btn-primary btn-sm ms-2"
-              @click="onClickEdit(user.id)"
+              class="btn btn-primary btn-sm ms-2 w-auto"
+              @click="onClickEdit(car.id)"
             >
               <i class="bi bi-pencil-fill"></i>
             </button>
