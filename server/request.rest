@@ -80,3 +80,6 @@ Content-Type: application/json
     "color": "Grey",
     "dailyRate": 22500
 }
+
+### get cars, ordered by year
+get http://localhost:3000/carsByYear

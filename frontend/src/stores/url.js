@@ -34,6 +34,9 @@ export const useUrlStore = defineStore({
     urlUsers(){
       return `${this.urlData}/users`
     },
+    urlLoaners(){
+      return `${this.urlData}/loaners`
+    },
     urlFreeDriversAbc(){
       return `${this.urlData}/freeDriversAbc`
     },
@@ -42,6 +45,9 @@ export const useUrlStore = defineStore({
     },
     urlTrips(){
       return `${this.urlData}/trips`
+    },
+    urlCarsByYear(){
+      return `${this.urlData}/carsByYear`
     }
   },
 });

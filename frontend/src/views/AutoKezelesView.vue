@@ -4,7 +4,7 @@
     <h1>Manage Cars</h1>
 
     <!--#region táblázat -->
-    <table class="table table-bordered table-hover table-dark ">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>
@@ -17,19 +17,15 @@
               New car
             </button>
           </th>
-          <th>Manufacture year</th>
-          <th>Type (brand, model)</th>
-          <th>Color</th>
-          <th>Licence number</th>
-          <th>Daily rate</th>
+          <th @click="sort('year')">Manufacture year</th>
+          <th @click="sort('type')">Type (brand, model)</th>
+          <th @click="sort('color')">Color</th>
+          <th @click="sort('license')">Licence number</th>
+          <th @click="sort('dailyRate')">Daily rate</th>
         </tr>
       </thead>
-      <tbody v-for="(car, index) in cars"
-          :key="`car${index}`">
-        <tr
-          :class="currentRowBackground(car.id)"
-          @click="onClikRow(car.id)"
-        >
+      <tbody v-for="(car, index) in sortedCars" :key="`car${index}`">
+        <tr :class="currentRowBackground(car.id)" @click="onClikRow(car.id)">
           <td class="text-nowrap">
             <!-- törlés -->
             <button
@@ -57,6 +53,14 @@
         </tr>
       </tbody>
     </table>
+      <th>
+        <button class="btn btn-dark btn-sm" @click="prevPage">Previous</button>
+      </th>
+      <th>
+        <button class="btn btn-dark btn-sm" @click="nextPage">Next</button>
+      </th>
+    debug: sort = {{ currentSort }}, dir = {{ currentSortDir }}, page =
+    {{ currentPage }}
     <!--#endregion táblázat -->
 
     <!--#region Modal -->
@@ -108,9 +112,7 @@
                   required
                   v-model="editableCar.color"
                 />
-                <div class="invalid-feedback">
-                  This field is mandatory
-                </div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
               <!-- Rendszám -->
@@ -123,16 +125,12 @@
                   required
                   v-model="editableCar.type"
                 />
-                <div class="invalid-feedback">
-                  This field is mandatory
-                </div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
               <!-- Rendszám -->
               <div class="col-md-6">
-                <label for="license" class="form-label"
-                  >Licence number</label
-                >
+                <label for="license" class="form-label">Licence number</label>
                 <input
                   type="text"
                   class="form-control"
@@ -144,7 +142,13 @@
               </div>
               <div class="col-md-6">
                 <label for="dailyRate">Daily rate</label>
-                <input type="number" class="form-control" id="dailyRate" required v-model="editableCar.dailyRate">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="dailyRate"
+                  required
+                  v-model="editableCar.dailyRate"
+                />
               </div>
             </form>
             <!--#endregion Form -->
@@ -162,7 +166,6 @@
             <button
               type="button"
               class="btn btn-primary"
-              
               @click="onClickSave()"
             >
               Save changes
@@ -189,7 +192,7 @@ class Car {
     type = null,
     year = null,
     color = null,
-    dailyRate = null,
+    dailyRate = null
   ) {
     this.id = id;
     this.license = license;
@@ -211,6 +214,10 @@ export default {
       form: null,
       state: "view",
       currentId: null,
+      currentSort: "name",
+      currentSortDir: "asc",
+      pageSize: 5,
+      currentPage: 1,
     };
   },
   mounted() {
@@ -222,6 +229,21 @@ export default {
     this.form = document.querySelector(".needs-validation");
   },
   methods: {
+    sort: function (s) {
+      //if s == current sort, reverse
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
+      }
+      this.currentSort = s;
+    },
+    nextPage: function () {
+      if (this.currentPage * this.pageSize < this.cars.length)
+        this.currentPage++;
+    },
+    prevPage: function () {
+      if (this.currentPage > 1) this.currentPage--;
+    },
+
     async getCars() {
       let url = this.storeUrl.urlCars;
       const config = {
@@ -239,6 +261,18 @@ export default {
       // });
     },
 
+    async getCarsByYear() {
+      let url = this.storeUrl.urlCarsByYear;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.cars = data.data;
+    },
 
     async getCarById(id) {
       let url = `${this.storeUrl.urlCars}/${id}`;
@@ -347,6 +381,21 @@ export default {
         return "Edit car";
       }
     },
+    sortedCars: function () {
+      return this.cars
+        .sort((a, b) => {
+          let modifier = 1;
+          if (this.currentSortDir === "desc") modifier = -1;
+          if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+          if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+          return 0;
+        })
+        .filter((row, index) => {
+          let start = (this.currentPage - 1) * this.pageSize;
+          let end = this.currentPage * this.pageSize;
+          if (index >= start && index < end) return true;
+        });
+    },
   },
 };
 </script>
@@ -357,5 +406,12 @@ export default {
   background-color: lightgrey;
 }
 
+td,
+th {
+  padding: 5px;
+}
 
+th {
+  cursor: pointer;
+}
 </style>

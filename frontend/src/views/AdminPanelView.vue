@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Admin panel</h1>
-    <table class="table table-bordered table-hover table-dark ">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>

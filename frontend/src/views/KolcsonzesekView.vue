@@ -4,7 +4,7 @@
     
     <h1>Kölcsönzések</h1>
 
-    <table class="table table-bordered table-hover table-dark">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>Autó Típusa</th>

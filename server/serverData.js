@@ -219,7 +219,7 @@ app.get("/users", (req, res) => {
 function getLoans(res, carId) {
     return new Promise((resolve, reject) => {
       let sql = `
-      SELECT id, loanId, carId, loanStart, numberOfDays from loans
+      SELECT id, loanId, carId, DATE_FORMAT(loanStart, '%Y.%m.%d') loanStart, numberOfDays from loans
       WHERE carId = ?`;
   
       pool.getConnection(function (error, connection) {
@@ -242,6 +242,26 @@ function getLoans(res, carId) {
   //Csak a cars tábla
   app.get("/cars", (req, res) => {
     let sql = `SELECT id, license, type, year, color, dailyRate FROM cars`;
+  
+    pool.getConnection(function (error, connection) {
+      if (error) {
+        sendingGetError(res, "Server connecting error!");
+        return;
+      }
+      connection.query(sql, async function (error, results, fields) {
+        if (error) {
+          message = "Cars sql error";
+          sendingGetError(res, message);
+          return;
+        }
+        sendingGet(res, null, results);
+      });
+      connection.release();
+    });
+  });
+
+  app.get("/carsByYear", (req, res) => {
+    let sql = `SELECT id, license, type, year, color, dailyRate FROM cars ORDER BY year`;
   
     pool.getConnection(function (error, connection) {
       if (error) {

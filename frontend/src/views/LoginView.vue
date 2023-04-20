@@ -1,32 +1,96 @@
 <template>
-  <div class="p-3 my-width-login">
-    <!-- user name -->
-    <div class="mb-3">
-      <label for="userName" class="form-label">Username:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="userName"
-        v-model="storeLogin.userName"
-      />
-    </div>
-    <!-- password -->
-    <div class="mb-3">
-      <label for="password" class="form-label">Password:</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        v-model="storeLogin.password"
-      />
-    </div>
-    <!-- Button login -->
-    <button type="button" class="btn btn-primary mb-3" @click="login()">
-      Login
-    </button>
+  <div id="app">
+    <div class="login-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-8 w-auto mx-auto">
+            <div
+              v-if="!registerActive"
+              class="card login"
+              v-bind:class="{ error: emptyFields }"
+            >
+              <h1>Sign In</h1>
+              <form class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userName"
+                  v-model="storeLogin.userName"
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  v-model="storeLogin.password"
+                  placeholder="Password"
+                  required
+                />
+                <button type="button" class="btn btn-primary" @click="login()">
+                  Login
+                </button>
+                <p>
+                  Don't have an account?
+                  <a
+                    href="#"
+                    @click="
+                      (registerActive = !registerActive), (emptyFields = false)
+                    "
+                    >Sign up here</a
+                  >
+                </p>
+                <div
+                  v-if="loginErrorMessage"
+                  class="alert alert-danger"
+                  role="alert"
+                >
+                  {{ loginErrorMessage }}
+                </div>
+              </form>
+            </div>
 
-    <div v-if="loginErrorMessage" class="alert alert-danger" role="alert">
-      {{ loginErrorMessage }}
+            <div
+              v-else
+              class="card register"
+              v-bind:class="{ error: emptyFields }"
+            >
+              <h1>Sign Up</h1>
+              <form class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userName"
+                  v-model="storeLogin.userName"
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  v-model="storeLogin.password"
+                  placeholder="Password"
+                  required
+                />
+                <button class="btn btn-primary" @click="Register()">
+                  Register
+                </button>
+                <p>
+                  Already have an account?
+                  <a
+                    href="#"
+                    @click="
+                      (registerActive = !registerActive), (emptyFields = false)
+                    "
+                    >Sign in here</a
+                  >
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -88,11 +152,11 @@ export default {
           // this.getTodos();
         } else {
           //sikertelen bejelenkezés
-          this.loginErrorMessageShow("Hibás usernév vagy jelszó");
+          this.loginErrorMessageShow("Username or password incorrect");
         }
       } catch (error) {
         // this.errorMessage = `Server error`;
-        this.loginErrorMessageShow("Server error 2");
+        this.loginErrorMessageShow("Server error");
       }
     },
   },
@@ -103,4 +167,22 @@ export default {
 .my-width-login {
   max-width: 500px;
 }
+
+p {
+  line-height: 1rem;
+}
+
+.card {
+  padding: 20px;
+}
+
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 500px;
+}
+
+h1 {
+      margin-bottom: 1.5rem;
+   }
 </style>

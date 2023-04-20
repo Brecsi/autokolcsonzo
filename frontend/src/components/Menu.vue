@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark my-mt">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/"
-        @click="onClickMenu(1)"
-      >Kezdőlap</router-link>
+      <router-link class="navbar-brand" to="/" @click="onClickMenu(1)"
+        >Home</router-link
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -18,10 +18,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/about"
-            :class="{active: menuState === 3}"
-            @click="onClickMenu(3)"
-            >Információk</router-link>
+            <router-link
+              class="nav-link"
+              to="/about"
+              :class="{ active: menuState === 2 }"
+              @click="onClickMenu(2)"
+              >About</router-link
+            >
           </li>
           <li class="nav-item dropdown">
             <a
@@ -30,28 +33,47 @@
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              :class="{active: menuState === 4}"
-              @click="onClickMenu(4)"
+              :class="{ active: menuState === 3}"
+              @click="onClickMenu(3)"
             >
               Management
             </a>
             <ul class="dropdown-menu">
               <li>
-                <router-link class="dropdown-item" to="/kolcsonzesek"
-                  >Kölcsönzések</router-link
+                <router-link
+                  class="dropdown-item"
+                  to="/kolcsonzesek"
+                  >Loans</router-link
                 >
               </li>
               <li>
-                <router-link class="dropdown-item" to="/autoKezeles">Autók kezelése</router-link
+                <router-link
+                  class="dropdown-item"
+                  to="/autoKezeles"
+                  >Manage Cars</router-link
                 >
               </li>
               <li>
-                <router-link class="dropdown-item" to="/fuvarBevitel"
-                  >Fuvar bevitel</router-link
+                <router-link
+                  class="dropdown-item"
+                  to="/kolcsonzokKezelese"
+                  >Registered Loaners</router-link
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  :class="{ disabled: !storeLogin.loginSuccess }"
+                  to="/fuvarBevitel"
+                  >Add Loan</router-link
                 >
               </li>
               <li>
-                <router-link class="dropdown-item" to="/admin"
+                <router-link
+                  class="dropdown-item"
+                  :class="{ disabled: !storeLogin.loginSuccess }"
+                  to="/admin"
                   >Admin panel</router-link
                 >
               </li>
@@ -65,6 +87,9 @@
               >Logout ( {{ storeLogin.userName }} )</router-link
             >
           </li>
+            <button type="button" class="nav-item btn btn-dark btn-sm">
+              Notifications <span class="badge badge-light">4</span>
+            </button>
         </ul>
         <form class="d-flex" role="search">
           <input
@@ -86,7 +111,7 @@ import { useLoginStore } from "@/stores/login";
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
 
-const msg = "helo";
+const msg = "Logged out";
 let menuState = null;
 async function logout() {
   console.log("logout");
@@ -106,8 +131,8 @@ async function logout() {
   storeLogin.clearLogin();
 }
 
-function onClickMenu(number){
-  this.menuState = number
+function onClickMenu(number) {
+  this.menuState = number;
 }
 // export default {
 //   data() {
@@ -124,7 +149,7 @@ function onClickMenu(number){
   /* color: white !important */
 }
 
-.my-mt{
+.my-mt {
   margin-top: 100px;
 }
 </style>
