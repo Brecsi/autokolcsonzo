@@ -1,6 +1,7 @@
 
 <template>
   <div class="container-fluid my-container p-0" id="app">
+    
     <PageLoader />
     <Menu />
 
@@ -10,7 +11,6 @@
 
 <script>
 import Menu from "@/components/Menu.vue";
-import Card from './components/Card.vue'
 import PageLoader from './components/PageLoader.vue'
 // import { useUrlStore } from "./stores/url";
 // const storeUrl = useUrlStore();
@@ -29,10 +29,9 @@ export default {
     }
   },
   components: {
-    Card,
     PageLoader,
-    Menu
-  }
+    Menu,
+  },
 };
 </script>
 
