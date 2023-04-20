@@ -9,15 +9,14 @@
               New loaner
             </button>
           </th>
-          <th>Name</th>
-          <th>License number</th>
-          <th>Phone number</th>
+          <th @click="sort('name')">Name</th>
+          <th @click="sort('licenseNum')">License number</th>
+          <th @click="sort('phoneNum')">Phone number</th>
+          <th>Page: {{ currentPage }}</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="(loaner, index) in sortedLoaners" :key="`loaner${index}`">
         <tr
-          v-for="(loaner, index) in loaners"
-          :key="`loaner${index}`"
           :class="currentRowBackground(loaner.id)"
           @click="onClikRow(loaner.id)"
         >
@@ -42,11 +41,18 @@
           </td>
           <td>{{ loaner.name }}</td>
           <td>{{ loaner.licenseNum }}</td>
-          <td>{{ loaner.phoneNum }}</td>
+          <td>+36{{ loaner.phoneNum }}</td>
         </tr>
       </tbody>
     </table>
-
+    <th>
+        <button class="btn btn-dark btn-sm" @click="prevPage">Previous</button>
+      </th>
+      <th>
+        <button class="btn btn-dark btn-sm" @click="nextPage">Next</button>
+      </th>
+    debug: sort = {{ currentSort }}, dir = {{ currentSortDir }}, page =
+    {{ currentPage }}
 <!--#region Modal -->
 <div
       class="modal fade"
@@ -171,6 +177,10 @@ export default {
       form: null,
       state: "view",
       currentId: null,
+      currentSort: "name",
+      currentSortDir: "asc",
+      pageSize: 10,
+      currentPage: 1,
     };
   },
   mounted() {
@@ -179,9 +189,24 @@ export default {
       keyboard: false,
     });
 
-    this.form = doument.querySelector(".needs-validation");
+    this.form = document.querySelector(".needs-validation");
   },
   methods: {
+    sort: function (s) {
+      //if s == current sort, reverse
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
+      }
+      this.currentSort = s;
+    },
+    nextPage: function () {
+      if (this.currentPage * this.pageSize < this.loaners.length)
+        this.currentPage++;
+    },
+    prevPage: function () {
+      if (this.currentPage > 1) this.currentPage--;
+    },
+
     async getLoaners() {
       let url = this.storeUrl.urlLoaners;
       const config = {
@@ -192,6 +217,7 @@ export default {
       };
       const response = await fetch(url, config);
       const data = await response.json();
+      console.log(url);
       this.loaners = data.data;
     },
     async getLoanerById(id) {
@@ -208,7 +234,7 @@ export default {
     },
     async postLoaner() {
       let url = this.storeUrl.urlLoaners;
-      const body = JSON.stringify(this.editableCar);
+      const body = JSON.stringify(this.editableLoaner);
       const config = {
         method: "POST",
         headers: {
@@ -292,10 +318,37 @@ export default {
         }else if (this.state === "edit") {
             return "Edit loaner"
         }
-    }
+    },
+    sortedLoaners: function () {
+      return this.loaners
+        .sort((a, b) => {
+          let modifier = 1;
+          if (this.currentSortDir === "desc") modifier = -1;
+          if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+          if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+          return 0;
+        })
+        .filter((row, index) => {
+          let start = (this.currentPage - 1) * this.pageSize;
+          let end = this.currentPage * this.pageSize;
+          if (index >= start && index < end) return true;
+        });
+    },
   }
 };
 </script>
 
 <style>
+.my-bg-current-row {
+  background-color: lightgrey;
+}
+
+td,
+th {
+  padding: 5px;
+}
+
+th {
+  cursor: pointer;
+}
 </style>

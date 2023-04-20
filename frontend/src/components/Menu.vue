@@ -66,7 +66,7 @@
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"
                   to="/fuvarBevitel"
-                  >Add Loan</router-link
+                  >Register Loan</router-link
                 >
               </li>
               <li>

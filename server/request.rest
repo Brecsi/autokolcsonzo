@@ -1,6 +1,8 @@
 ### ---------------------------------------
 ### get cars
 get http://localhost:3000/cars
+###
+get http://localhost:3000/loaners
 
 ### get cars with loans (nosql)
 get http://localhost:3000/carsWithLoans
@@ -14,7 +16,14 @@ get http://localhost:3000/carsWithLoans/3
 get http://localhost:3000/users
 
 ###
-get http://localhost:3000/loans
+post http://localhost:3000/loaners
+Content-Type: application/json
+
+{
+    "name": "Kovács Boldizsár",
+    "licenseNum": "149142268394468",
+    "phoneNum": "06206281434"
+}
 ###
 get http://localhost:3000/loans/5
 
@@ -33,13 +42,13 @@ post http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "firstName": "Miguel",
-    "lastName": "Alvarez",
+    "firstName": "Szilágyi",
+    "lastName": "Brendon",
     "gender": "male",
-    "userName": "miguel",
-    "email": "miguel.alvarez@gmail.com",
+    "userName": "brecsi",
+    "email": "brecsi.admin@gmail.com",
     "password": "123",
-    "number": 0
+    "number": 1
 }
 
 
@@ -82,4 +91,8 @@ Content-Type: application/json
 }
 
 ### get cars, ordered by year
-get http://localhost:3000/carsByYear
+get http://localhost:3000/loaners
+
+###
+get http://localhost:3000/loaners/2
+

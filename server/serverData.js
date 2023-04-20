@@ -513,10 +513,133 @@ app.get("/loans/:id", (req, res) => {
 });
 
 
+
 //#endregion loans
 
 
+//#region loaners
+app.get("/loaners", (req, res) => {
+  let sql = `SELECT * FROM loaners`;
 
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(sql, async function (error, results, fields) {
+      sendingGet(res, error, results);
+    });
+    connection.release();
+  });
+});
+
+app.get("/loaners/:id", (req, res) => {
+  const id = req.params.id;
+  let sql = `
+    SELECT * FROM loaners
+    WHERE id = ?`;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(sql, [id], async function (error, results, fields) {
+      if (error) {
+        const message = "loaners sql error";
+        sendingGetError(res, message);
+        return;
+      }
+      if (results.length == 0) {
+        const message = `Couldn't find id: ${id}`;
+        sendingGetError(res, message);
+        return;
+      }
+      sendingGetById(res, null, results[0], id);
+    });
+    connection.release();
+  });
+});
+
+app.delete("/loaners/:id", (req, res) => {
+  const id = req.params.id;
+
+  let sql = `
+    DELETE FROM loaners
+    WHERE id = ?`;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(sql, [id], function (error, result, fields) {
+      sendingDelete(res, error, result, id);
+    });
+    connection.release();
+  });
+});
+
+app.post("/loaners", (req, res) => {
+  const newR = {
+    name: req.body.name,
+    licenseNum: req.body.licenseNum,
+    phoneNum: req.body.phoneNum,
+  };
+  console.log(newR);
+  let sql = `
+    INSERT loaners 
+    (name, licenseNum, phoneNum)
+    VALUES
+    ( ?, ?, ?)
+    `;
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(
+      sql,
+      [newR.name, newR.licenseNum, newR.phoneNum],
+      function (error, result, fields) {
+        sendingPost(res, error, result, newR);
+      }
+    );
+    connection.release();
+  });
+});
+
+app.put("/loaners/:id", (req, res) => {
+  const id = req.params.id;
+  const newR = {
+    name: mySanitizeHtml(req.body.name),
+    licenseNum: mySanitizeHtml(req.body.licenseNum),
+    phoneNum: mySanitizeHtml(req.body.phoneNum),
+  };
+  let sql = `
+    UPDATE loaners SET
+    name = ?,
+    licenseNum = ?,
+    phoneNum = ?
+    WHERE id = ?
+      `;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(
+      sql,
+      [newR.name, newR.licenseNum, newR.phoneNum, id],
+      function (error, result, fields) {
+        sendingPut(res, error, result, id, newR);
+      }
+    );
+    connection.release();
+  });
+});
+//#endregion loaners
 
 
 
