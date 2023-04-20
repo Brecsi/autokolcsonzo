@@ -5,14 +5,6 @@
     <p>But that's not all - our website is also user-friendly and accessible on any device. You can easily compare car models and rates to find the perfect fit for your budget. </p><p> Plus, our team of knowledgeable and dedicated representatives is here to help you every step of the way, ensuring your car-renting experience is stress-free and hassle-free.</p>
     <p>Ready to get started? Simply enter your travel details and preferences, and we'll show you our car selection. From there, you can book your car in just a few clicks. Our team is here to help you every step of the way, so don't hesitate to reach out if you have any questions or needs. Let us help you make your next car-renting experience memorable!</p>
   </div>
-  <div>
-    <ul>
-      <li><img src="car1.jpg" alt="Car 1"></li>
-      <li><img src="car2.jpg" alt="Car 2"></li>
-      <li><img src="car3.jpg" alt="Car 3"></li>
-      <li><img src="car4.jpg" alt="Car 4"></li>
-    </ul>
-  </div>
 </template>
 
 <script setup>
@@ -22,6 +14,9 @@ const storeCounter = useCounterStore();
 </script>
 
 <style>
+h1, p{
+  text-align: center;
+}
 
 ul {
   display: flex;
@@ -31,7 +26,4 @@ ul {
   padding: 0;
   list-style-type: none;
 }
-li {
-  margin-right: 10px;
-  text-align: center;
-}</style>
+</style>

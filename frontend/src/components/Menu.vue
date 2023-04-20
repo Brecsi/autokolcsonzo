@@ -148,7 +148,7 @@
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="button">Search</button>
         </form>
       </div>
     </div>

@@ -44,6 +44,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/autok",
+      name: "autok",
+      component: () => import("@/views/CarsView.vue"),
+      meta: {
+        requiresAuth: false,
+        title: "Autók / Autókölcsönző",
+      }
+    },
+    {
       path: "/kolcsonzokKezelese",
       name: "kolcsonzok",
       // route level code-splitting
