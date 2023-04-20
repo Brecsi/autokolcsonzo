@@ -16,19 +16,19 @@ const router = createRouter({
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("@/views/AboutView.vue"),
       meta: {
         requiresAuth: false,
         title: "About / Autókölcsönző",
       },
     },
+
+    {},
+
     {
       path: "/kolcsonzesek",
       name: "kolcsonzesek",
-      component: () => import("../views/KolcsonzesekView.vue"),
+      component: () => import("@/views/KolcsonzesekView.vue"),
       meta: {
         requiresAuth: true,
         title: "Kölcsönzések / Autókölcsönző",
@@ -37,7 +37,7 @@ const router = createRouter({
     {
       path: "/autoKezeles",
       name: "autoKezeles",
-      component: () => import("../views/AutoKezelesView.vue"),
+      component: () => import("@/views/AutoKezelesView.vue"),
       meta: {
         requiresAuth: true,
         title: "Autó Kezelés / Autókölcsönző",
@@ -49,7 +49,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/kolcsonzokView.vue"),
+      component: () => import("@/views/kolcsonzokView.vue"),
       meta: {
         requiresAuth: true,
         title: "Kölcsönzők / Autókölcsönző",
@@ -58,7 +58,7 @@ const router = createRouter({
     {
       path: "/fuvarBevitel",
       name: "fuvarBevitel",
-      component: () => import("../views/FuvarBevitel.vue"),
+      component: () => import("@/views/FuvarBevitel.vue"),
       meta: {
         requiresAuth: true,
         title: "Fuvar bevitel / Autókölcsönző",
@@ -67,7 +67,7 @@ const router = createRouter({
     {
       path: "/count1",
       name: "count1",
-      component: () => import("../views/Count1View.vue"),
+      component: () => import("@/views/Count1View.vue"),
       meta: {
         requiresAuth: true,
         title: "Counter 1 / Taxi",
@@ -76,7 +76,7 @@ const router = createRouter({
     {
       path: "/admin",
       name: "admin",
-      component: () => import("../views/AdminPanelView.vue"),
+      component: () => import("@/views/AdminPanelView.vue"),
       meta: {
         requiresAuth: true,
         title: "Admin Panel / Autókölcsönző",
@@ -94,7 +94,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: () => import("../views/LoginView.vue"),
+      component: () => import("@/views/LoginView.vue"),
       meta: {
         requiresAuth: false,
         title: "Login / Autókölcsönző",
