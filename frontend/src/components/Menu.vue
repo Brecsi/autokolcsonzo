@@ -36,6 +36,42 @@
               :class="{ active: menuState === 3}"
               @click="onClickMenu(3)"
             >
+              Services
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  to="/autok"
+                  >Cars</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  to="/kolcsonzes"
+                  >Rent a car</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  to="/akciok"
+                  >Special Offers</router-link
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              :class="{ active: menuState === 4, disabled: !storeLogin.loginSuccess}"
+              @click="onClickMenu(4)"
+            >
               Management
             </a>
             <ul class="dropdown-menu">
@@ -43,7 +79,7 @@
                 <router-link
                   class="dropdown-item"
                   to="/kolcsonzesek"
-                  >Loans</router-link
+                  >Rents</router-link
                 >
               </li>
               <li>
@@ -57,7 +93,7 @@
                 <router-link
                   class="dropdown-item"
                   to="/kolcsonzokKezelese"
-                  >Registered Loaners</router-link
+                  >Registered Renters</router-link
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
@@ -66,7 +102,7 @@
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"
                   to="/fuvarBevitel"
-                  >Register Loan</router-link
+                  >Register Rent</router-link
                 >
               </li>
               <li>
@@ -79,6 +115,20 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <router-link
+            class="nav-link"
+            to="/help"
+            :class="{ active: menuState === 5 }"
+            @click="onClickMenu(5)"
+            >Help</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link
+            class="nav-link"
+            to="/FAQ"
+            >FAQ</router-link>
+          </li>
           <li class="nav-item" v-if="!storeLogin.loginSuccess">
             <router-link class="nav-link" to="/login">Login</router-link>
           </li>
@@ -87,9 +137,9 @@
               >Logout ( {{ storeLogin.userName }} )</router-link
             >
           </li>
-            <button type="button" class="nav-item btn btn-dark btn-sm">
+            <!-- <button type="button" class="nav-item btn btn-dark btn-sm">
               Notifications <span class="badge badge-light">4</span>
-            </button>
+            </button> -->
         </ul>
         <form class="d-flex" role="search">
           <input
@@ -152,4 +202,5 @@ function onClickMenu(number) {
 .my-mt {
   margin-top: 100px;
 }
+
 </style>

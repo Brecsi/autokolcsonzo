@@ -2,17 +2,17 @@
 <template>
   <div>
     
-    <h1>Kölcsönzések</h1>
+    <h1>Loans</h1>
 
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Autó Típusa</th>
-          <th>Gyártási év</th>
-          <th>Rendszám</th>
-          <th>Kölcsönzés dátuma</th>
-          <th>Napok száma</th>
-          <th>Ft/nap</th>
+          <th>Car type</th>
+          <th>Manufacture year</th>
+          <th>License</th>
+          <th>Loan start</th>
+          <th>Number of days</th>
+          <th>Daily fee</th>
         </tr>
       </thead>
       <tbody v-for="(car, index) in carsWithLoans"
