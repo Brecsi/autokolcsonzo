@@ -233,21 +233,7 @@ export default {
     this.form = document.querySelector(".needs-validation");
   },
   methods: {
-    sort: function (s) {
-      //if s == current sort, reverse
-      if (s === this.currentSort) {
-        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
-      }
-      this.currentSort = s;
-    },
-    nextPage: function () {
-      if (this.currentPage * this.pageSize < this.cars.length)
-        this.currentPage++;
-    },
-    prevPage: function () {
-      if (this.currentPage > 1) this.currentPage--;
-    },
-
+    
     async getCars() {
       let url = this.storeUrl.urlCars;
       const config = {
@@ -290,7 +276,7 @@ export default {
       const data = await response.json();
       this.editableCar = data.data;
     },
-
+    
     async postCar() {
       let url = this.storeUrl.urlCars;
       const body = JSON.stringify(this.editableCar);
@@ -333,6 +319,20 @@ export default {
       };
       const response = await fetch(url, config);
       this.getCars();
+    },
+    sort: function (s) {
+      //if s == current sort, reverse
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
+      }
+      this.currentSort = s;
+    },
+    nextPage: function () {
+      if (this.currentPage * this.pageSize < this.cars.length)
+        this.currentPage++;
+    },
+    prevPage: function () {
+      if (this.currentPage > 1) this.currentPage--;
     },
     onClikRow(id) {
       this.currentId = id;

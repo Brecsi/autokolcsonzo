@@ -25,7 +25,7 @@ Content-Type: application/json
     "phoneNum": "06206281434"
 }
 ###
-get http://localhost:3000/loans/5
+get http://localhost:3000/loans
 
 ### login
 post http://localhost:4000/login
@@ -91,8 +91,8 @@ Content-Type: application/json
 }
 
 ### get cars, ordered by year
-get http://localhost:3000/loaners
+get http://localhost:3000/carsByYear
 
 ###
-get http://localhost:3000/loaners/2
+get http://localhost:3000/loaners
 

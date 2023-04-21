@@ -83,11 +83,11 @@ const router = createRouter({
       },
     },
     {
-      path: "/fuvarBevitel",
-      name: "fuvarBevitel",
-      component: () => import("@/views/FuvarBevitel.vue"),
+      path: "/kolcsonzes",
+      name: "kolcsonzes",
+      component: () => import("@/views/kolcsonzesView.vue"),
       meta: {
-        requiresAuth: true,
+        requiresAuth: false,
         title: "Register Rent / Junkie Rental",
       },
     },

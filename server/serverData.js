@@ -467,7 +467,7 @@ function getLoans(res, carId) {
       }
       connection.query(
         sql,
-        [newR.license, newR.type, newR.year, newR.color,, newR.dailyRate, id],
+        [newR.license, newR.type, newR.year, newR.color, newR.dailyRate, id],
         function (error, result, fields) {
           sendingPut(res, error, result, id, newR);
         }
