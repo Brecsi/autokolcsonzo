@@ -94,5 +94,5 @@ Content-Type: application/json
 get http://localhost:3000/carsByYear
 
 ###
-get http://localhost:3000/loaners
+get http://localhost:3000/loans
 

@@ -125,6 +125,26 @@ export default {
           this.errorMessage = 'Server error. Try again later.';
           return;
         });
+    },
+    async postRent() {
+      let url = this.storeUrl.urlLoans;
+      const body = JSON.stringify(this.makeRent);
+      const config = {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+        body: body,
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      console.log(data.data);
+      this.getCars();
+    },
+
+    rentCar(){
+      this.makeRent = new Rent();
     }
   }
 };

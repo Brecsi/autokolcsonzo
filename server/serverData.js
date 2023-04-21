@@ -512,7 +512,36 @@ app.get("/loans/:id", (req, res) => {
   });
 });
 
-
+app.post("/cars", (req, res) => {
+  const newR = {
+    license: mySanitizeHtml(req.body.license),
+    type: mySanitizeHtml(req.body.type),
+    year: req.body.year,
+    color: mySanitizeHtml(req.body.color),
+    dailyRate: req.body.dailyRate,
+  };
+  console.log(newR);
+  let sql = `
+    INSERT cars 
+    (license, type, year, color, dailyRate)
+    VALUES
+    ( ?, ?, ?, ?, ?)
+    `;
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(
+      sql,
+      [newR.license, newR.type, newR.year, newR.color, newR.dailyRate],
+      function (error, result, fields) {
+        sendingPost(res, error, result, newR);
+      }
+    );
+    connection.release();
+  });
+});
 
 //#endregion loans
 
