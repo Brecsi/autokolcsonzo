@@ -1,12 +1,10 @@
 <template>
     <div class="faq-container">
       <h1>Frequently Asked Questions</h1>
-      <p>
-        <p v-for="(faq, index) in faqs" :key="index">
+        <label v-for="(faq, index) in faqs" :key="index">
           <h3>Q: {{ faq.question }}</h3>
           <p>A: {{ faq.answer }}</p>
-        </p>
-    </p>
+        </label>
     </div>
   </template>
   
