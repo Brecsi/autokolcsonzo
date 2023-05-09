@@ -1,9 +1,136 @@
 <template>
   <div>
-    <h1>Welcome to Our Car-Renting Website</h1>
-    <p>Looking for a car for your next trip? Look no further! Our car renting company offers an extensive selection of vehicles to choose from, including economy cars, luxury SUVs, minivans, and sports cars. With us, you can drive away in style and without having to worry about gas or maintenance costs.</p>
-    <p>But that's not all - our website is also user-friendly and accessible on any device. You can easily compare car models and rates to find the perfect fit for your budget. </p><p> Plus, our team of knowledgeable and dedicated representatives is here to help you every step of the way, ensuring your car-renting experience is stress-free and hassle-free.</p>
-    <p>Ready to get started? Simply enter your travel details and preferences, and we'll show you our car selection. From there, you can book your car in just a few clicks. Our team is here to help you every step of the way, so don't hesitate to reach out if you have any questions or needs. Let us help you make your next car-renting experience memorable!</p>
+    <section class="hero">
+      <div class="hero-image">
+        <img src="/assets/car-image.jpg" alt="Luxurious Car" />
+        <button class="btn" @click="bookNow()">Book Now</button>
+      </div>
+    </section>
+
+    <section class="car-options">
+      <h2>Why Choose Us?</h2>
+      <div class="car-option">
+        <div class="car-image">
+          <img src="/assets/sports-car.jpg" alt="Sports Car" />
+        </div>
+        <div class="car-info">
+          <h3>Sports Cars</h3>
+          <p>
+            Looking for an adrenaline rush? Our sports cars will satisfy your
+            need for speed.
+          </p>
+          <button class="btn" @click="bookNow()">Book Now</button>
+        </div>
+      </div>
+      <div class="car-option">
+        <div class="car-image">
+          <img src="/assets/luxury-suv.jpg" alt="Luxury SUV" />
+        </div>
+        <div class="car-info">
+          <h3>Luxury SUVs</h3>
+          <p>Travel in style and comfort with our luxurious SUVs.</p>
+          <button class="btn" @click="bookNow()">Book Now</button>
+        </div>
+      </div>
+      <div class="car-option">
+        <div class="car-image">
+          <img src="/assets/economy-car.jpg" alt="Economy Car" />
+        </div>
+        <div class="car-info">
+          <h3>Economy Cars</h3>
+          <p>
+            Need a car for your daily commute or weekend getaway? Our economy
+            cars are perfect for you.
+          </p>
+          <button class="btn" @click="bookNow()">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="service">
+        <div class="service-image">
+          <img src="/assets/service-desk.jpg" alt="Service Desk" />
+        </div>
+        <div class="service-info">
+          <h3>Friendly Customer Service</h3>
+          <p>
+            Our friendly and knowledgeable staff is always ready to assist you
+            with any queries or concerns.
+          </p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-image">
+          <img src="/assets/gps-device.jpg" alt="GPS Device" />
+        </div>
+        <div class="service-info">
+          <h3>Advanced GPS Technology</h3>
+          <p>
+            Our cars come equipped with advanced GPS technology to help you
+            navigate unfamiliar roads.
+          </p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-image">
+          <img src="/assets/child-seat.jpg" alt="Child Seat" />
+        </div>
+        <div class="service-info">
+          <h3>Accessories Available</h3>
+          <p>
+            We offer a range of accessories, including child seats, to ensure
+            the safety and comfort of your loved ones.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial">
+        <div class="testimonial-image">
+          <img src="/assets/happy-customer.jpg" alt="Happy Customer" />
+        </div>
+        <div class="testimonial-info">
+          <p>
+            "I had an amazing experience renting a car from [Car Rental Company
+            Name]. The staff was friendly and helpful, and the car was in
+            excellent condition."
+          </p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-image">
+          <img src="/assets/satisfied-customer.jpg" alt="Satisfied Customer" />
+        </div>
+        <div class="testimonial-info">
+          <p>
+            "I rented a luxurious SUV for my family vacation, and it was the
+            best decision ever. The car was spacious, comfortable, and had all
+            the latest features."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+        </ul>
+      </nav>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -14,8 +141,6 @@ const storeCounter = useCounterStore();
 </script>
 
 <style>
-
-
 ul {
   display: flex;
   align-items: center;

@@ -15,6 +15,10 @@ get http://localhost:3000/carsWithLoans/3
 ### get users
 get http://localhost:3000/users
 
+### get user
+get http://localhost:3000/users/1
+
+
 ###
 post http://localhost:3000/loaners
 Content-Type: application/json
@@ -42,13 +46,13 @@ post http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "firstName": "admin",
-    "lastName": "admin",
-    "gender": "admin",
-    "userName": "admin",
-    "email": "admin.admin@gmail.com",
+    "firstName": "test",
+    "lastName": "test",
+    "gender": "test",
+    "userName": "test1",
+    "email": "test.test@gmail.com",
     "password": "123",
-    "number": 1
+    "number": 0
 }
 
 
@@ -89,6 +93,19 @@ Content-Type: application/json
     "color": "Grey",
     "dailyRate": 22500
 }
+
+###post rent
+post http://localhost:3000/loans
+Content-Type: application/json
+
+{
+    "loanId": 1,
+    "carId": 1,
+    "loanStart": "2023-01-04T23:00:00.000Z",
+    "numberOfDays": null
+}
+
+
 
 ### get cars, ordered by year
 get http://localhost:3000/carsByYear

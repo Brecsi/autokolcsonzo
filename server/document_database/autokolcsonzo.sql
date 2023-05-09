@@ -7,7 +7,7 @@ select * from users;
 
 
 delete from users;
-
+delete from loaners where id = 0;
 delete from loans;
 
 insert into loans (id, loanId, carId, loanStart, numberOfDays, dailyRate)
@@ -39,3 +39,57 @@ VALUES
   (22,'David Wang', '210987654321098', '302109876'),
   (23,'Rachel Green', '876543210987654', '308765432'),
   (24,'Mark Johnson', '76543210987676', '307654321');
+
+
+#lekérdezések
+#get users
+  select id, firstName, lastName, gender, userName, email, number from users;
+
+
+#get carsRentalState
+  select DISTINCT c.id as carId, c.license, c.type, c.year, c.color, c.dailyRate, IF  (l.numberOfDays is null, 'Not available', 'Available') as numberOfDays from cars c 
+  left join loans l on c.id = l.carId
+  order by c.id;
+
+#még nem bérelt autók
+  select DISTINCT c.id as carId, c.license, c.type, c.year, c.color, c.dailyRate, IF  (l.numberOfDays is null, 'Not available', 'Available') as numberOfDays from cars c 
+  left join loans l on c.id = l.carId
+    where l.id is null
+  order by c.id;
+
+#bérelt és nincs vissza hozva
+select DISTINCT  c.id as carId, c.license, c.type, c.year, c.color, c.dailyRate, IF  (l.numberOfDays is null, 'Not available', 'Available') as numberOfDays from cars c 
+  inner join loans l on c.id = l.carId
+    where l.numberOfDays is null
+  order by c.id;
+
+#bérelt és vissza hozva
+select DISTINCT l.id as rentId, c.id as carId, c.license, c.type, c.year, c.color, c.dailyRate, IF  (l.numberOfDays is null, 'Not available', 'Available') as numberOfDays from cars c 
+  inner join loans l on c.id = l.carId
+    where l.numberOfDays is not null
+  order by c.id;
+
+
+#Kimutatja, hogy mely autók állnak rendelkezésre, és melyek nem
+#get carsAvailability
+#---------------------------------------------
+
+
+  select DISTINCT c.id as carId, c.license, c.type, c.year, c.color, c.dailyRate,  'Available' as Available from cars c 
+  left join loans l on c.id = l.carId
+    where l.id is null
+  union
+select DISTINCT  c.id as carId, c.license, c.type, c.year, c.color, c.dailyRate, 'Not available' as Available from cars c 
+  inner join loans l on c.id = l.carId
+    where l.numberOfDays is null
+  union
+select *, 'Avaliable' as Available from cars 
+  where id not in (
+  select DISTINCT c.id as carId from cars c 
+  left join loans l on c.id = l.carId
+    where l.id is null
+  union
+select DISTINCT  c.id as carId from cars c 
+  inner join loans l on c.id = l.carId
+    where l.numberOfDays is null);
+#-----------------------------------------

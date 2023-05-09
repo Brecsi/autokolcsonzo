@@ -77,7 +77,7 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>-60 px</X>
+              <X>-180 px</X>
               <Y>120 px</Y>
             </Location>
             <Size>
@@ -100,8 +100,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>200 px</X>
-              <Y>-40 px</Y>
+              <X>130 px</X>
+              <Y>-20 px</Y>
             </Location>
             <Size>
               <Width>175 px</Width>
@@ -123,7 +123,7 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>-230 px</X>
+              <X>-180 px</X>
               <Y>-120 px</Y>
             </Location>
             <Size>
@@ -145,7 +145,7 @@
               <OID>5</OID>
               <Comment>6</Comment>
               <OutModel>3</OutModel>
-              <InModel>2</InModel>
+              <InModel>1</InModel>
               <OutPort>7</OutPort>
               <InPort>8</InPort>
               <Parent>0</Parent>
@@ -153,11 +153,11 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>12.6436769954436 px</X>
-                  <Y>56.0919539347903 px</Y>
+                  <X>143 px</X>
+                  <Y>72 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Left</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>7</OID>
                   <PortType>FixedAnchor</PortType>
@@ -165,11 +165,11 @@
               </Port>
               <Port>
                 <Location>
-                  <X>172.643677543532 px</X>
-                  <Y>38.6206887857903 px</Y>
+                  <X>10 px</X>
+                  <Y>36 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>8</OID>
                   <PortType>FixedAnchor</PortType>
@@ -178,17 +178,17 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>180 px</X>
-                <Y>16.0919539347903 px</Y>
+                <X>370 px</X>
+                <Y>52 px</Y>
               </PointD>
               <PointD>
-                <X>180 px</X>
-                <Y>158.62068878579 px</Y>
+                <X>370 px</X>
+                <Y>136 px</Y>
               </PointD>
             </BendPoints>
-            <IsManuallyRouted>false</IsManuallyRouted>
+            <IsManuallyRouted>true</IsManuallyRouted>
             <DbOid>
-              <Path>autokolcsonzo.loans.FK_loans_loaners_id</Path>
+              <Path>autokolcsonzo.loans.FK_loans_cars_id</Path>
               <TypeName>ForeignKey</TypeName>
             </DbOid>
           </Model>
@@ -202,11 +202,11 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>20 px</X>
-                  <Y>-71.2643616780026 px</Y>
+                  <X>-65 px</X>
+                  <Y>-42 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Left</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>9</OID>
                   <PortType>FixedAnchor</PortType>
@@ -224,7 +224,7 @@
               <OID>10</OID>
               <Comment>11</Comment>
               <OutModel>3</OutModel>
-              <InModel>1</InModel>
+              <InModel>2</InModel>
               <OutPort>12</OutPort>
               <InPort>13</InPort>
               <Parent>0</Parent>
@@ -232,11 +232,11 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>162.068963532782 px</X>
-                  <Y>72.1839078695807 px</Y>
+                  <X>0 px</X>
+                  <Y>56 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>12</OID>
                   <PortType>FixedAnchor</PortType>
@@ -244,11 +244,11 @@
               </Port>
               <Port>
                 <Location>
-                  <X>4.02298601729848 px</X>
-                  <Y>36.7816084457178 px</Y>
+                  <X>165 px</X>
+                  <Y>33 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Left</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>13</OID>
                   <PortType>FixedAnchor</PortType>
@@ -257,17 +257,17 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>395 px</X>
-                <Y>32.1839078695807 px</Y>
+                <X>60 px</X>
+                <Y>36 px</Y>
               </PointD>
               <PointD>
-                <X>395 px</X>
-                <Y>136.781608445718 px</Y>
+                <X>60 px</X>
+                <Y>153 px</Y>
               </PointD>
             </BendPoints>
-            <IsManuallyRouted>false</IsManuallyRouted>
+            <IsManuallyRouted>true</IsManuallyRouted>
             <DbOid>
-              <Path>autokolcsonzo.loans.FK_loans_cars_id</Path>
+              <Path>autokolcsonzo.loans.FK_loans_loaners_id</Path>
               <TypeName>ForeignKey</TypeName>
             </DbOid>
           </Model>
@@ -281,11 +281,11 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-20 px</X>
-                  <Y>-52.2988496987787 px</Y>
+                  <X>70 px</X>
+                  <Y>-58.5 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>14</OID>
                   <PortType>FixedAnchor</PortType>
@@ -301,10 +301,10 @@
         </Children>
         <ViewPort>
           <ScaleMode>Free</ScaleMode>
-          <Scale>0.87</Scale>
+          <Scale>1</Scale>
           <Location>
-            <X>-352.873561284331 px</X>
-            <Y>-210.344826021067 px</Y>
+            <X>-404 px</X>
+            <Y>-248 px</Y>
           </Location>
         </ViewPort>
       </Model>

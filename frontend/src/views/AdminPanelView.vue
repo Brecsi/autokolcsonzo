@@ -23,8 +23,7 @@
           <th>Status</th>
         </tr>
       </thead>
-      <tbody v-for="(user, index) in users"
-          :key="`user${index}`">
+      <tbody v-for="(user, index) in users" :key="`user${index}`">
         <tr>
           <td class="text-nowrap">
             <!-- törlés -->
@@ -35,13 +34,12 @@
             >
               <i class="bi bi-trash3-fill"></i>
             </button>
-
           </td>
           <td>
             <button
               type="button"
               class="btn btn-primary btn-sm ms-2 w-auto"
-              @click="onClickEdit(car.id)"
+              @click="onClickEdit(user.id)"
             >
               <i class="bi bi-pencil-fill"></i>
             </button>
@@ -127,26 +125,21 @@
                   required
                   v-model="editableUser.userName"
                 />
-                <div class="invalid-feedback">
-                  This field is mandatory
-                </div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
-              
               <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
                 <input
-                type="text"
-                class="form-control"
-                id="email"
-                required
-                v-model="editableUser.email"
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  required
+                  v-model="editableUser.email"
                 />
-                <div class="invalid-feedback">
-                  This field is mandatory
-                </div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
-              
+
               <div class="col-md-6">
                 <label for="password" class="form-label">Password</label>
                 <input
@@ -156,15 +149,11 @@
                   required
                   v-model="editableUser.password"
                 />
-                <div class="invalid-feedback">
-                  This field is mandatory
-                </div>
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
               <div class="col-md-6">
-                <label for="number" class="form-label"
-                  >Status number</label
-                >
+                <label for="number" class="form-label">Status number</label>
                 <input
                   type="text"
                   class="form-control"
@@ -190,7 +179,6 @@
             <button
               type="button"
               class="btn btn-primary"
-              
               @click="onClickSave()"
             >
               Save changes
@@ -199,7 +187,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -212,14 +199,14 @@ const storeLogin = useLoginStore();
 
 class User {
   constructor(
-      id = 0,
-      firstName = null,
-      lastName = null,
-      gender = null,
-      userName = null,
-      email = null,
-      password = null,
-      number = null,
+    id = 0,
+    firstName = null,
+    lastName = null,
+    gender = null,
+    userName = null,
+    email = null,
+    password = null,
+    number = null
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -232,9 +219,9 @@ class User {
   }
 }
 
-export default{
-  data(){
-    return{
+export default {
+  data() {
+    return {
       storeUrl,
       storeLogin,
       users: [],
@@ -275,7 +262,7 @@ export default{
       };
       const response = await fetch(url, config);
       const data = await response.json();
-      this.editableUser = data.data;
+      this.editableUser = data.data[0];
     },
     async postUser() {
       let url = this.storeUrl.urlUsers;
@@ -325,10 +312,13 @@ export default{
       this.editableUser = new User();
       this.modal.show();
     },
-    onClickDelete(id){
-      this.state = "delete";
-      this.deleteUser(id);
-      this.modal.show();
+    onClickDelete(id) {
+      let text = "Confirm delete?";
+      if (confirm(text) == true) {
+        this.state = "delete";
+        this.deleteUser(id);
+        this.modal.hide();
+      }
     },
     onClickEdit(id) {
       this.state = "edit";
@@ -344,12 +334,12 @@ export default{
       if (this.form.checkValidity()) {
         if (this.state == "edit") {
           this.putUser();
-        }else if (this.state = "new") {
+        } else if ((this.state = "new")) {
           this.postUser();
         }
         this.modal.hide();
       }
-    }
+    },
   },
   computed: {
     stateTitle() {
@@ -360,8 +350,7 @@ export default{
       }
     },
   },
-}
-
+};
 </script>
 
 

@@ -18,7 +18,8 @@
           <td>{{ car.color }}</td>
           <td>{{ car.license }}</td>
           <td>{{ car.dailyRate }}</td>
-          <td>{{ carsWithLoans.loanStart ? "Available" : "Not Available" }}</td>
+          <!-- <td>{{ carsWithLoans.numberOfDays ? "Available" : "Not Available" }}</td> -->
+          <td>{{ carsWithLoans.numberOfDays }}</td>
         </tr>
       </tbody>
     </table>
