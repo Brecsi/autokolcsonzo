@@ -52,10 +52,6 @@
     margin-top: 20px;
   }
   
-  li {
-    margin-bottom: 20px;
-  }
-  
   h3 {
     margin-bottom: 10px;
     font-size: 18px;

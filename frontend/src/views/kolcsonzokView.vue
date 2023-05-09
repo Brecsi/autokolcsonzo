@@ -29,7 +29,7 @@
           <td><button
               type="button"
               class="btn btn-primary btn-sm ms-2 w-auto"
-              @click="onClickEdit(car.id)"
+              @click="onClickEdit(loaner.id)"
             >
               <i class="bi bi-pencil-fill"></i>
             </button></td>
@@ -136,7 +136,7 @@ export default {
       currentId: null,
       currentSort: "name",
       currentSortDir: "asc",
-      pageSize: 10,
+      pageSize: 5,
       currentPage: 1,
     };
   },

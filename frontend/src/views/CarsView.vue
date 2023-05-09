@@ -1,6 +1,6 @@
 <template>
   <div class="table-container">
-    <table>
+    <table >
       <thead>
         <tr>
           <th>Year</th>
@@ -11,7 +11,7 @@
           <th>Availability</th>
         </tr>
       </thead>
-      <tbody v-for="(loan, index) in carsWithLoans" :key="`loan${index}`">
+      <tbody>
         <tr v-for="(car, index) in cars" :key="`car${index}`">
           <td>{{ car.year }}</td>
           <td>{{ car.type }}</td>

@@ -32,7 +32,7 @@ post http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "userName": "brecsi",
+    "userName": "admin",
     "password": "123"
 }
 
@@ -42,11 +42,11 @@ post http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "firstName": "Szilágyi",
-    "lastName": "Brendon",
-    "gender": "male",
-    "userName": "brecsi",
-    "email": "brecsi.admin@gmail.com",
+    "firstName": "admin",
+    "lastName": "admin",
+    "gender": "admin",
+    "userName": "admin",
+    "email": "admin.admin@gmail.com",
     "password": "123",
     "number": 1
 }
