@@ -12,8 +12,7 @@ get http://localhost:3000/cars/0
 
 ### get car by id (csak a car tábla)
 get http://localhost:3000/carsWithLoans/3
-### get users
-get http://localhost:3000/users
+
 
 ### get user
 get http://localhost:3000/users/1
@@ -46,13 +45,13 @@ post http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "firstName": "test",
-    "lastName": "test",
-    "gender": "test",
-    "userName": "test1",
-    "email": "test.test@gmail.com",
+    "firstName": "admin",
+    "lastName": "admin",
+    "gender": "admin",
+    "userName": "admin",
+    "email": "admin.admin@gmail.com",
     "password": "123",
-    "number": 0
+    "number": 1
 }
 
 
@@ -113,3 +112,12 @@ get http://localhost:3000/carsByYear
 ###
 get http://localhost:3000/loans
 
+
+### delete user
+delete http://localhost:3000/users/1
+
+### get users
+get http://localhost:3000/users
+
+###get carsAvailability
+get http://localhost:3000/carsAvailability

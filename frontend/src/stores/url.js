@@ -22,15 +22,6 @@ export const useUrlStore = defineStore({
     urlCarsWithLoans(){
       return `${this.urlData}/carsWithLoans`
     },
-    urlCarsTrips(){
-      return `${this.urlData}/carsTrips`
-    },
-    urlCarsWithDrivers(){
-      return `${this.urlData}/carsWithDrivers`
-    },
-    urlCarsWithDriversReal(){
-      return `${this.urlData}/carsWithDriversReal`
-    },
     urlUsers(){
       return `${this.urlData}/users`
     },
@@ -40,17 +31,11 @@ export const useUrlStore = defineStore({
     urlLoans(){
       return `${this.urlData}/loans`
     },
-    urlFreeDriversAbc(){
-      return `${this.urlData}/freeDriversAbc`
-    },
-    urlTripsByCarId(){
-      return `${this.urlData}/tripsByCarId`
-    },
-    urlTrips(){
-      return `${this.urlData}/trips`
-    },
     urlCarsByYear(){
       return `${this.urlData}/carsByYear`
+    },
+    urlCarsAvailability(){
+      return `${this.urlData}/carsAvailability`
     }
   },
 });
