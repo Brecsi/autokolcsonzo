@@ -16,23 +16,31 @@
         </tr>
       </thead>
       <tbody v-for="(loaner, index) in sortedLoaners" :key="`loaner${index}`">
-        <tr :class="currentRowBackground(loaner.id)" @click="onClikRow(loaner.id)">
+        <tr
+          :class="currentRowBackground(loaner.id)"
+          @click="onClikRow(loaner.id)"
+        >
           <td class="text-nowrap">
             <!-- törlés -->
-            <button type="button" class="btn btn-danger btn-sm" @click="onClickDelete(loaner.id)">
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              @click="onClickDelete(loaner.id)"
+            >
               <i class="bi bi-trash3-fill"></i>
             </button>
 
             <!-- módosítás -->
-            
           </td>
-          <td><button
+          <td>
+            <button
               type="button"
               class="btn btn-primary btn-sm ms-2 w-auto"
               @click="onClickEdit(loaner.id)"
             >
               <i class="bi bi-pencil-fill"></i>
-            </button></td>
+            </button>
+          </td>
           <td>{{ loaner.name }}</td>
           <td>{{ loaner.licenseNum }}</td>
           <td>+36{{ loaner.phoneNum }}</td>
@@ -49,14 +57,25 @@
       </th>
     </div>
     <!--#region Modal -->
-    <div class="modal fade" id="modalLoaner" tabindex="-1" aria-labelledby="modalLoanerModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="modalLoaner"
+      tabindex="-1"
+      aria-labelledby="modalLoanerModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
               {{ stateTitle }}
             </h1>
-            <button type="button" class="btn-close" @click="onClickCancel()" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              @click="onClickCancel()"
+              aria-label="Close"
+            ></button>
           </div>
 
           <!--#region Modal body -->
@@ -67,21 +86,39 @@
               <!-- Autó név -->
               <div class="col-md-12">
                 <label for="name" class="form-label">Loaner name</label>
-                <input type="text" class="form-control" id="name" required v-model="editableLoaner.name" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  required
+                  v-model="editableLoaner.name"
+                />
                 <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
               <!-- Rendszám -->
               <div class="col-md-6">
-                <label for="licenseNum" class="form-label">License number</label>
-                <input type="text" class="form-control" id="licenseNum" required v-model="editableLoaner.licenseNum" />
-                <div class="invalid-feedback">
-                  This field is mandatory
-                </div>
+                <label for="licenseNum" class="form-label"
+                  >License number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="licenseNum"
+                  required
+                  v-model="editableLoaner.licenseNum"
+                />
+                <div class="invalid-feedback">This field is mandatory</div>
               </div>
               <div class="col-md-12">
                 <label for="phoneNum" class="form-label">Phone number</label>
-                <input type="text" class="form-control" id="phoneNum" required v-model="editableLoaner.phoneNum" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phoneNum"
+                  required
+                  v-model="editableLoaner.phoneNum"
+                />
                 <div class="invalid-feedback">This field is mandatory</div>
               </div>
             </form>
@@ -90,10 +127,18 @@
           <!--#endregion Modal body -->
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" @click="onClickCancel()">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              @click="onClickCancel()"
+            >
               Close
             </button>
-            <button type="button" class="btn btn-primary" @click="onClickSave()">
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="onClickSave()"
+            >
               Save changes
             </button>
           </div>
@@ -101,9 +146,6 @@
       </div>
     </div>
     <!--#endregion Modal -->
-
-
-
   </div>
 </template>
 
@@ -136,7 +178,7 @@ export default {
       currentId: null,
       currentSort: "name",
       currentSortDir: "asc",
-      pageSize: 5,
+      pageSize: 10,
       currentPage: 1,
     };
   },
@@ -271,9 +313,9 @@ export default {
   computed: {
     stateTitle() {
       if (this.state === "new") {
-        return "New loaner"
+        return "New loaner";
       } else if (this.state === "edit") {
-        return "Edit loaner"
+        return "Edit loaner";
       }
     },
     sortedLoaners: function () {
@@ -291,7 +333,7 @@ export default {
           if (index >= start && index < end) return true;
         });
     },
-  }
+  },
 };
 </script>
 

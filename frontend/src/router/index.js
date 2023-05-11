@@ -92,11 +92,20 @@ const router = createRouter({
       },
     },
     {
-      path: "/kolcsonzes",
-      name: "kolcsonzes",
-      component: () => import("@/views/kolcsonzesView.vue"),
+      path: "/bookRent",
+      name: "bookRent",
+      component: () => import("@/views/BookRentView.vue"),
       meta: {
         requiresAuth: false,
+        title: "Register Rent / Junkie Rental",
+      },
+    },
+    {
+      path: "/rentRegister",
+      name: "rentRegister",
+      component: () => import("@/views/RegisterRentView.vue"),
+      meta: {
+        requiresAuth: true,
         title: "Register Rent / Junkie Rental",
       },
     },

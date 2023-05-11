@@ -17,18 +17,37 @@ values
 
 
 
-INSERT cars 
+INSERT into cars 
       (license, type, year, color, dailyRate)
       VALUES
-      ('HHH-414', 'Volkswagen', 2005, 'Black', 25000);
+      ('ABC-123', 'Mercedes-Benz E-Class', 2020, 'White', 75000),
+('DEF-456', 'Toyota Camry', 2017, 'Red', 35000),
+('GHI-789', 'Honda Civic', 2015, 'Silver', 22000),
+('JKL-101', 'BMW X5', 2021, 'Black', 85000),
+('MNO-112', 'Ford Mustang', 2016, 'Yellow', 45000),
+('PQR-113', 'Audi Q7', 2019, 'Blue', 70000),
+('STU-114', 'Chevrolet Corvette', 2022, 'Orange', 90000),
+('VWX-115', 'Mazda CX-5', 2020, 'Grey', 38000),
+('YZA-116', 'Hyundai Sonata', 2018, 'White', 29000),
+('BCD-117', 'Nissan GT-R', 2023, 'Red', 98000),
+('EFG-118', 'Lexus RX', 2021, 'Black', 82000),
+('HIJ-119', 'Volvo XC90', 2022, 'Blue', 78000),
+('KLM-120', 'Tesla Model S', 2019, 'Silver', 95000),
+('NOP-121', 'Subaru Outback', 2017, 'Green', 30000),
+('QRS-122', 'Porsche 911', 2020, 'Yellow', 92000),
+('TUV-123', 'Kia Stinger', 2022, 'Orange', 42000),
+('WXY-124', 'Jeep Wrangler', 2018, 'Black', 40000),
+('ZAB-125', 'Toyota Supra', 2023, 'Grey', 87000),
+('CDE-126', 'Chevrolet Camaro', 2021, 'Red', 56000),
+('FGH-127', 'Mercedes-Benz G-Class', 2020, 'White', 105000);
 
 
 INSERT INTO loaners (id, name, licenseNum, phoneNum)
 VALUES
-  (11,'Jennifer Lopez', '6543210987654', '555-5433'),
-  (12,'John Smith', '5432109876543', '555-4321'),
-  (13,'Sarah Brown', '4321098765432', '555-5679'),
-  (14,'Mike Williams', '32109876543098', '555-6756'),
+  (11,'Jennifer Lopez', '6543210987654', '305555433'),
+  (12,'John Smith', '5432109876543', '205554321'),
+  (13,'Sarah Brown', '4321098765432', '705555679'),
+  (14,'Mike Williams', '32109876543098', '205556756'),
   (15,'John Doe', '12345678901234', '301234567'),
   (16,'Jane Doe', '09876543210987', '300987654'),
   (17,'Robert Smith', '76543210987654', '307654321'),
@@ -41,7 +60,7 @@ VALUES
   (24,'Mark Johnson', '76543210987676', '307654321');
 
 
-update loans set numberOfDays = 35 where id = 3;
+update loans set numberOfDays = 4 where id = 8;
 
 
 #lekérdezések

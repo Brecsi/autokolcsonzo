@@ -98,11 +98,12 @@ post http://localhost:3000/loans
 Content-Type: application/json
 
 {
-    "loanId": 1,
-    "carId": 1,
-    "loanStart": "2023-01-04T23:00:00.000Z",
+    "loanId": 2,
+    "carId": 16,
+    "loanStart": "2023-04-19",
     "numberOfDays": null
 }
+
 
 
 

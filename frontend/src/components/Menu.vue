@@ -49,7 +49,7 @@
               <li>
                 <router-link
                   class="dropdown-item"
-                  to="/kolcsonzes"
+                  to="/bookRent"
                   >Rent a car</router-link
                 >
               </li>
@@ -101,7 +101,7 @@
                 <router-link
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"
-                  to="/fuvarBevitel"
+                  to="/rentRegister"
                   >Register Rent</router-link
                 >
               </li>
@@ -141,15 +141,6 @@
               Notifications <span class="badge badge-light">4</span>
             </button> -->
         </ul>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="button">Search</button>
-        </form>
       </div>
     </div>
   </nav>
@@ -195,9 +186,6 @@ function onClickMenu(number) {
 </script>
 
 <style>
-.router-link-active {
-  /* color: white !important */
-}
 
 .my-mt {
   margin-top: 100px;

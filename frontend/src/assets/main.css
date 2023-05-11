@@ -1,13 +1,25 @@
 .my-container {
   max-width: 1200px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 1);
 }
 
 .my-width-100 {
   width: 100px;
 }
 
-body { background-image: url(/background.jpg); }
+/* body { background-image: url(/background.jpeg); background-attachment: fixed; background-repeat: no-repeat; background-position: fill;} */
+
+body{
+  background-image: url(/background.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
 form { max-width:420px; margin:50px top; margin: auto; }
 
 .feedback-input {
@@ -27,7 +39,7 @@ form { max-width:420px; margin:50px top; margin: auto; }
   outline:0;
 }
 
-.feedback-input:focus { border:2px solid #074e7e;}
+.feedback-input:focus { border:2px solid #0400ff;}
 
 textarea {
   height: 150px;
@@ -50,7 +62,7 @@ textarea {
   margin-top:-4px;
   font-weight:700;
 }
-[type="submit"]:hover { background:#136d29; }
+[type="submit"]:hover { background:#0004ff; }
 
 
 
@@ -83,7 +95,7 @@ textarea {
   padding: 10px;
   border-radius: 5px;
   font-family: Arial, sans-serif;
-  box-shadow: 0px 2px 6px #888888;
+  box-shadow: 0px 2px 6px #4b494b;
 }
 
 textarea {

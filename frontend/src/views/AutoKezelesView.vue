@@ -220,7 +220,7 @@ export default {
       currentId: null,
       currentSort: "name",
       currentSortDir: "asc",
-      pageSize: 5,
+      pageSize: 10,
       currentPage: 1,
     };
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="table-container">
+  <div class="table-container table:hover">
     <table>
       <thead>
         <tr>
@@ -8,18 +8,20 @@
           <th>Color</th>
           <th>License</th>
           <th>Price/Day</th>
-          <th style="text-align: center; color: cycleTimeColorStat(Availability, 70)">Availability</th>
+          <th>Availability</th>
+          <th>Rating</th>
         </tr>
       </thead>
-      <tbody>
-        <tr v-for="(car, index) in carsAvailability" :key="`car${index}`">
+      <tbody v-for="(car, index) in carsAvailability" :key="`car${index}`">
+        <tr>
           <td>{{ car.year }}</td>
           <td>{{ car.type }}</td>
           <td>{{ car.color }}</td>
           <td>{{ car.license }}</td>
           <td>{{ car.dailyRate }}</td>
+          <!-- <b-form-rating v-model="value"></b-form-rating> -->
           <!-- <td>{{ carsWithLoans.numberOfDays ? "Available" : "Not Available" }}</td> -->
-          <td>{{ car.Available }}</td>
+          <td :style="{color: car.Available === 'Not available' ? 'red' : 'green',}">{{ car.Available }}</td>
         </tr>
       </tbody>
     </table>
@@ -41,6 +43,7 @@ export default {
       cars: [],
       carsWithLoans: [],
       carsAvailability: [],
+      value: 3,
     };
   },
   mounted() {
@@ -59,7 +62,7 @@ export default {
       };
       const response = await fetch(url, config);
       const data = await response.json();
-      this.carsAvailability = data.data;
+      this.carsAvailability = data.data.sort((a, b) => a.year - b.year);
     },
 
     async getCars() {
@@ -132,6 +135,7 @@ td {
 
 th {
   background-color: #f2f2f2;
+  cursor: pointer;
 }
 
 .yellow {
