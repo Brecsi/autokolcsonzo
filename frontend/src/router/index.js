@@ -53,6 +53,15 @@ const router = createRouter({
       }
     },
     {
+      path: "/offers",
+      name: "offers",
+      component: () => import("@/views/OffersView.vue"),
+      meta: {
+        requiresAuth: false,
+        title: "Offers / Junkie Rental",
+      }
+    },
+    {
       path: "/faq",
       name: "faq",
       component: () => import("@/views/FAQView.vue"),

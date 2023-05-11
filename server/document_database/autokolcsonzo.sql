@@ -41,6 +41,9 @@ VALUES
   (24,'Mark Johnson', '76543210987676', '307654321');
 
 
+update loans set numberOfDays = 35 where id = 3;
+
+
 #lekérdezések
 #get users
   select id, firstName, lastName, gender, userName, email, number from users;

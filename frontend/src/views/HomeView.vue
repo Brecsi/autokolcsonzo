@@ -1,9 +1,8 @@
 <template>
   <div>
-    <section class="hero">
-      <div class="hero-image">
-        <img src="/assets/car-image.jpg" alt="Luxurious Car" />
-        <button class="btn" @click="bookNow()">Book Now</button>
+    <section class="car-option">
+      <div class="car-image">
+        <img src="../assets/mercedes-s-class.png" alt="Luxurious Car" />
       </div>
     </section>
 
@@ -19,7 +18,6 @@
             Looking for an adrenaline rush? Our sports cars will satisfy your
             need for speed.
           </p>
-          <button class="btn" @click="bookNow()">Book Now</button>
         </div>
       </div>
       <div class="car-option">
@@ -29,7 +27,6 @@
         <div class="car-info">
           <h3>Luxury SUVs</h3>
           <p>Travel in style and comfort with our luxurious SUVs.</p>
-          <button class="btn" @click="bookNow()">Book Now</button>
         </div>
       </div>
       <div class="car-option">
@@ -42,7 +39,6 @@
             Need a car for your daily commute or weekend getaway? Our economy
             cars are perfect for you.
           </p>
-          <button class="btn" @click="bookNow()">Book Now</button>
         </div>
       </div>
     </section>
@@ -148,5 +144,19 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+div.car-image {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+section {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+img {
+  width: 50%;
 }
 </style>

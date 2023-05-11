@@ -56,7 +56,7 @@
               <li>
                 <router-link
                   class="dropdown-item"
-                  to="/akciok"
+                  to="/offers"
                   >Special Offers</router-link
                 >
               </li>
