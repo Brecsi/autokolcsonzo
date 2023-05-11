@@ -18,7 +18,7 @@
       <tbody v-for="(car, index) in carsWithLoans"
           :key="`car${index}`">
         <tr
-        v-for="(loan, index) in car.loans" :key="`loans${index}`">
+        v-for="(loan, index) in car.loans" :key="`loans${index}`" :style="{ background: loan.numberOfDays == null ? 'rgba(255, 0, 0, 0.6)' : 'white' }">
           <td>{{ car.type }}</td>
           <td>{{ car.year }}</td>
           <td>{{ car.license }}</td>
