@@ -23,33 +23,6 @@
       <textarea name="text" class="feedback-input" placeholder="Comment"></textarea>
       <input type="submit" value="SUBMIT" />
     </form>
-
-
-
-
-    <!-- <div class="container">
-      <
-        <p>
-          <label for="first_name">First Name:</label>
-          <input type="text" class="form-control" id="userName" placeholder="Fisrt name" required/>
-          <label for="last_name">Last Name:</label>
-          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" required>
-          <label for="email">Email Address:</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="Email address" required>
-          <label for="phone_number">Phone Number:</label>
-          <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone number">
-          <label for="reason_for_contacting_us">Reason for Contacting Us:</label>
-          <select class="form-control" name="reason_for_contacting_us" id="reason_for_contacting_us">
-            <option value="">Select a reason</option>
-            <option value="reservation_issue">Reservation issue</option>
-            <option value="customer_service_issue">Customer service issue</option>
-            <option value="payment_issue">Payment issue</option>
-          </select>
-          <textarea name="message" id="message" rows="5" required class="form-control" placeholder="Write us a message"></textarea>
-          <button class="btn btn-primary" type="submit">Submit</button>
-        </p>
-      </form>
-    </div> -->
   </div>
 </template>
 

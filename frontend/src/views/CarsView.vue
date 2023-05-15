@@ -9,7 +9,6 @@
           <th>License</th>
           <th>Price/Day</th>
           <th>Availability</th>
-          <th>Rating</th>
         </tr>
       </thead>
       <tbody v-for="(car, index) in carsAvailability" :key="`car${index}`">
@@ -43,7 +42,6 @@ export default {
       cars: [],
       carsWithLoans: [],
       carsAvailability: [],
-      value: 3,
     };
   },
   mounted() {

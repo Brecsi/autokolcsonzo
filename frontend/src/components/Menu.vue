@@ -105,7 +105,7 @@
                   >Register Rent</router-link
                 >
               </li>
-              <li>
+              <li v-if="storeLogin.number = 0">
                 <router-link
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"

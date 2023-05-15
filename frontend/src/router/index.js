@@ -23,7 +23,15 @@ const router = createRouter({
       },
     },
 
-    {},
+    {
+      path: "/privacypolicy",
+      name: "privacypolicy",
+      component: () => import("@/views/PrivacyPolicy.vue"),
+      meta: {
+        requiresAuth: false,
+        title: "Privacy Policy / Junkie Rental",
+      },
+    },
 
     {
       path: "/kolcsonzesek",

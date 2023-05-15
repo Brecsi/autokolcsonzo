@@ -4,7 +4,7 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>
+          <th v-if="!storeLogin.number">
             <!-- New user -->
             <button
               type="button"
@@ -14,7 +14,7 @@
               New User
             </button>
           </th>
-          <th>Edit</th>
+          <th v-if="!storeLogin.number">Edit</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Gender</th>
@@ -24,8 +24,8 @@
         </tr>
       </thead>
       <tbody v-for="(user, index) in users" :key="`user${index}`">
-        <tr>
-          <td class="text-nowrap">
+        <tr v-if="storeLogin.userId == user.id && storeLogin.number > 0 || storeLogin.number == 0">
+          <td class="text-nowrap" v-if="!storeLogin.number">
             <!-- törlés -->
             <button
               type="button"
@@ -35,7 +35,7 @@
               <i class="bi bi-trash3-fill"></i>
             </button>
           </td>
-          <td>
+          <td v-if="!storeLogin.number">
             <button
               type="button"
               class="btn btn-primary btn-sm ms-2 w-auto"
@@ -153,7 +153,7 @@
               </div>
 
               <div class="col-md-6">
-                <label for="number" class="form-label">Status number</label>
+                <label for="number" class="form-label">Access level</label>
                 <input
                   type="text"
                   class="form-control"
@@ -236,6 +236,8 @@ export default {
     this.modal = new bootstrap.Modal(document.getElementById("modalUser"), {
       keyboard: false,
     });
+
+    console.log(storeLogin.number);
 
     this.form = document.querySelector(".needs-validation");
   },

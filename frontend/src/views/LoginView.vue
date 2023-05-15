@@ -28,17 +28,17 @@
             <div v-else class="card register card-body" v-bind:class="{ error: emptyFields }">
               <h1>Sign Up</h1>
               <form class="form-group">
-                <input type="text" class="form-control" id="firstName" v-model="storeLogin.firstName"
+                <input type="text" class="form-control" id="firstName" v-model="firstName"
                   placeholder="First Name" required />
-                <input type="text" class="form-control" id="lastName" v-model="storeLogin.lastName"
+                <input type="text" class="form-control" id="lastName" v-model="lastName"
                   placeholder="Last Name" required />
-                <input type="text" class="form-control" id="gender" v-model="storeLogin.gender" placeholder="Gender"
+                <input type="text" class="form-control" id="gender" v-model="gender" placeholder="Gender"
                   required />
-                <input type="text" class="form-control" id="userName" v-model="storeLogin.userName" placeholder="Username"
+                <input type="text" class="form-control" id="userName" v-model="userName" placeholder="Username"
                   required />
-                <input type="email" class="form-control" id="email" v-model="storeLogin.email" placeholder="E-mail"
+                <input type="email" class="form-control" id="email" v-model="email" placeholder="E-mail"
                   required />
-                <input type="password" class="form-control" id="password" v-model="storeLogin.password"
+                <input type="password" class="form-control" id="password" v-model="password"
                   placeholder="Password" required />
                 <button class="btn btn-primary" @click="registerUser()">
                   Register
@@ -94,7 +94,7 @@ export default {
       storeUrl,
       storeLogin,
       users: [],
-      newUser: new User(),
+      editableUser: new User(),
       loginErrorMessage: null,
     };
   },
@@ -118,7 +118,7 @@ export default {
 
     async postUser() {
       let url = this.storeUrl.urlUsers;
-      const body = JSON.stringify(this.newUser);
+      const body = JSON.stringify(this.editableUser);
       const config = {
         method: "POST",
         headers: {
@@ -128,13 +128,11 @@ export default {
         body: body,
       };
       const response = await fetch(url, config);
-      const data = await response.json();
-      console.log(data.data);
       this.getUsers();
     },
 
     registerUser() {
-      this.newUser = new User();
+      this.editableUser = new User();
       this.postUser();
     },
 
@@ -192,13 +190,6 @@ export default {
 </script>
 
 <style>
-div#app {
-  background-image: url(../../public/loginBackground.jpg);
-  background-attachment: fixed;
-  background-position: inherit;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 
 .my-width-login {
   max-width: 500px;

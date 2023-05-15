@@ -1,4 +1,3 @@
-
 <template>
   <div>
     
@@ -18,12 +17,12 @@
       <tbody v-for="(car, index) in carsWithLoans"
           :key="`car${index}`">
         <tr
-        v-for="(loan, index) in car.loans" :key="`loans${index}`" :style="{ background: loan.numberOfDays == null ? 'rgba(255, 0, 0, 0.6)' : 'white' }">
+        v-for="(loan, index) in car.loans" :key="`loans${index}`" >
           <td>{{ car.type }}</td>
           <td>{{ car.year }}</td>
           <td>{{ car.license }}</td>
           <td>{{ loan.loanStart }}</td>
-          <td>{{ loan.numberOfDays }}</td>
+          <td :style="{ background: loan.numberOfDays == null ? 'rgba(255, 0, 0, 0.5)' : 'white' }">{{ loan.numberOfDays }}</td>
           <td>{{ car.dailyRate }}</td>
         </tr>
       </tbody>
