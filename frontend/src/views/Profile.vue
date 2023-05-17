@@ -241,7 +241,7 @@ export default {
         if(storeLogin.number == 0){
             this.role = "Administrator";
         }else if(storeLogin.number == 1){
-            this.role = "Page Editor";
+            this.role = "Manager";
         }else if(storeLogin.number == 2){
             this.role = "User";
         }
@@ -252,12 +252,6 @@ export default {
 
   
   <style>
-   .inf-content{
-    border:1px solid #DDDDDD;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;
-    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
-}	
+  
   </style>
   

@@ -1,75 +1,85 @@
 <template>
   <div>
-    
     <h1>Manage Rents</h1>
 
-    <table class="table table-bordered table-hover">
+    <!-- #Region table -->
+    <table class="table">
       <thead>
         <tr>
-          <th>Car type</th>
-          <th>Manufacture year</th>
-          <th>License</th>
-          <th>Loan start</th>
-          <th>Number of days</th>
-          <th>Daily fee</th>
+          <th scope="col">Loan</th>
+          <th scope="col">Car</th>
+          <th scope="col">Loan start</th>
+          <th scope="col">Number of days</th>
+          <th scope="col" v-if="storeLogin.number == 0 || storeLogin.number == 1">Edit</th>
         </tr>
       </thead>
-      <tbody v-for="(car, index) in carsWithLoans"
-          :key="`car${index}`">
-        <tr
-        v-for="(loan, index) in car.loans" :key="`loans${index}`" >
-          <td>{{ car.type }}</td>
-          <td>{{ car.year }}</td>
-          <td>{{ car.license }}</td>
-          <td>{{ loan.loanStart }}</td>
-          <td :style="{ background: loan.numberOfDays == null ? 'rgba(255, 0, 0, 0.5)' : 'white' }">{{ loan.numberOfDays }}</td>
-          <td>{{ car.dailyRate }}</td>
-          <td v-if="storeLogin.number == 0">
-            <button
-              type="button"
-              class="btn btn-primary btn-sm ms-2 w-auto"
-              @click="onClickEdit(user.id)"
-            >
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-          </td>
+      <tbody>
+        <tr>
+          <th scope="row">loan.id</th>
+          <td>car.type</td>
+          <td>loan.loanstart</td>
+          <td>loan.numberOfDays</td>
+        </tr>
+        <tr>
+          <th scope="row">loan.id</th>
+          <td>car.type</td>
+          <td>loan.loanstart</td>
+          <td>loan.numberOfDays</td>
+        </tr>
+        <tr>
+          <th scope="row">loan.id</th>
+          <td>car.type</td>
+          <td>loan.loanstart</td>
+          <td>loan.numberOfDays</td>
+          <button class="btn btn-dark"><i class="bi bi-pencil-fill"></i></button>
         </tr>
       </tbody>
     </table>
+    <!-- #Endregion table -->
   </div>
 </template>
 
 <script>
+import * as bootstrap from "bootstrap";
 import { useUrlStore } from "@/stores/url";
 import { useLoginStore } from "@/stores/login";
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
+
+class Loan {
+  constructor(
+    id = 0,
+    loanId = null,
+    carId = null,
+    loanStart = null,
+    numberOfDays = null
+  ) {
+    this.id = id;
+    this.loanId = loanId;
+    this.carId = carId;
+    this.loanStart = loanStart;
+    this.numberOfDays = numberOfDays;
+  }
+}
+
 export default {
   data() {
     return {
       storeUrl,
       storeLogin,
-      carsWithLoans: [],
+      loans: [],
+      editableLoans: new Loan(),
+      modal: null,
+      form: null,
+      state: "view",
     };
   },
-  mounted() {
-    this.getCarsWithLoans();
-  },
-  methods: {
-    async getCarsWithLoans() {
-      let url = this.storeUrl.urlCarsWithLoans;
-      const config = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${this.storeLogin.accessToken}`,
-        },
-      };
-      const response = await fetch(url, config);
-      const data = await response.json();
-      this.carsWithLoans = data.data;
-    },
-  },
-};
+}
+
+// cars (get)
+// loans (get, put, post)
+// cars with loans (get)
+// functionality (buttons)
 </script>
-<style>
-</style>
+
+<style></style>

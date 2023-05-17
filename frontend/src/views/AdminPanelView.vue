@@ -236,9 +236,7 @@ export default {
     this.modal = new bootstrap.Modal(document.getElementById("modalUser"), {
       keyboard: false,
     });
-
     console.log(storeLogin.number);
-
     this.form = document.querySelector(".needs-validation");
   },
   methods: {
