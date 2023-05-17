@@ -25,37 +25,12 @@
         </ol>
       </div>
     </div>
-    
-    <div class="home">
-      <div class="renting-info">
-        <div class="renting-option">
-          <i class="fas fa-car"></i>
-          <h3>Car Rental</h3>
-          <p>Rent a car for your next adventure</p>
-          <button class="btn btn-primary">Learn More</button>
-        </div>
-        <div class="renting-option">
-          <i class="fas fa-motorcycle"></i>
-          <h3>Motorcycle Rental</h3>
-          <p>Experience the freedom of the open road</p>
-          <button class="btn btn-primary">Learn More</button>
-        </div>
-        <div class="renting-option">
-          <i class="fas fa-bus"></i>
-          <h3>Van Rental</h3>
-          <p>Take your group on a road trip</p>
-          <button class="btn btn-primary">Learn More</button>
-        </div>
-      </div>
-    </div>
     <footer>
       <nav>
-        <ul>
+        <ul class="links">
           <li><router-link to="/about">About Us</router-link></li>
-          <li><a href="#">Contact Us</a></li>
           <li><router-link to="/faq">FAQ</router-link></li>
           <li><router-link to="/privacypolicy">Privacy Policy</router-link></li>
-          <li><a href="#">Terms and Conditions</a></li>
         </ul>
       </nav>
     </footer>

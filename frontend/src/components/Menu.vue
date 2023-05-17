@@ -43,7 +43,7 @@
                 <router-link
                   class="dropdown-item"
                   to="/autok"
-                  >Cars</router-link
+                  ><i class="bi bi-car-front-fill"></i> Cars</router-link
                 >
               </li>
               <li>
@@ -79,7 +79,7 @@
                 <router-link
                   class="dropdown-item"
                   to="/kolcsonzesek"
-                  >Rents</router-link
+                  >Manage Rents</router-link
                 >
               </li>
               <li>
@@ -93,7 +93,7 @@
                 <router-link
                   class="dropdown-item"
                   to="/kolcsonzokKezelese"
-                  >Registered Renters</router-link
+                  >Manage Renters</router-link
                 >
               </li>
               <li v-if="storeLogin.number == 0"><hr class="dropdown-divider" /></li>
@@ -105,7 +105,7 @@
                   >Register Rent</router-link
                 >
               </li>
-              <li >
+              <li v-if="storeLogin.number == 0">
                 <router-link
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"
@@ -121,7 +121,7 @@
             to="/help"
             :class="{ active: menuState === 5 }"
             @click="onClickMenu(5)"
-            >Help</router-link>
+            ><i class="bi bi-question-lg"></i> Help</router-link>
           </li>
           <li class="nav-item">
             <router-link
@@ -136,6 +136,9 @@
             <router-link class="nav-link" to="/login"
               >Logout ( {{ storeLogin.userName }} )</router-link
             >
+          </li>
+          <li class="nav-item" v-if="storeLogin.loginSuccess">
+            <router-link class="nav-link" to="/profile"><i class="bi bi-person-circle"></i> Profile</router-link>
           </li>
             <!-- <button type="button" class="nav-item btn btn-dark btn-sm">
               Notifications <span class="badge badge-light">4</span>

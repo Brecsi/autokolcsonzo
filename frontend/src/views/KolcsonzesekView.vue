@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <h1>Loans</h1>
+    <h1>Manage Rents</h1>
 
     <table class="table table-bordered table-hover">
       <thead>
@@ -24,6 +24,15 @@
           <td>{{ loan.loanStart }}</td>
           <td :style="{ background: loan.numberOfDays == null ? 'rgba(255, 0, 0, 0.5)' : 'white' }">{{ loan.numberOfDays }}</td>
           <td>{{ car.dailyRate }}</td>
+          <td v-if="storeLogin.number == 0">
+            <button
+              type="button"
+              class="btn btn-primary btn-sm ms-2 w-auto"
+              @click="onClickEdit(user.id)"
+            >
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

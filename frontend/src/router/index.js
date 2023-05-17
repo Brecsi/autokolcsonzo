@@ -43,6 +43,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/profile",
+      name: "profile",
+      component: () => import("@/views/Profile.vue"),
+      meta: {
+        requiresAuth: true,
+        title: "Profile / Junkie Rental",
+      },
+    },
+    {
       path: "/autoKezeles",
       name: "autoKezeles",
       component: () => import("@/views/AutoKezelesView.vue"),
