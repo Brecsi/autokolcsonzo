@@ -4,7 +4,7 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th v-if="!storeLogin.number">
+          <th v-if="storeLogin.number == 0">
             <!-- New user -->
             <button
               type="button"
@@ -14,13 +14,13 @@
               New User
             </button>
           </th>
-          <th v-if="!storeLogin.number">Edit</th>
+          <th v-if="storeLogin.number == 0">Edit</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Gender</th>
           <th>Username</th>
           <th>E-mail</th>
-          <th>Status</th>
+          <th>Access Level</th>
         </tr>
       </thead>
       <tbody v-for="(user, index) in users" :key="`user${index}`">
@@ -35,7 +35,7 @@
               <i class="bi bi-trash3-fill"></i>
             </button>
           </td>
-          <td v-if="!storeLogin.number">
+          <td v-if="storeLogin.number == 0">
             <button
               type="button"
               class="btn btn-primary btn-sm ms-2 w-auto"
@@ -49,7 +49,7 @@
           <td>{{ user.gender }}</td>
           <td>{{ user.userName }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.number }}</td>
+          <th :style="{ color: user.number === 0 ? 'red' : user.number === 1 ? 'green' : user.number === 2 ? 'blue' : 'grey' }"> {{ user.number }}</th>
         </tr>
       </tbody>
     </table>
@@ -140,10 +140,10 @@
                 <div class="invalid-feedback">This field is mandatory</div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6" v-if="state == 'new'">
                 <label for="password" class="form-label">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   id="password"
                   required

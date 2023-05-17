@@ -96,8 +96,8 @@
                   >Registered Renters</router-link
                 >
               </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
+              <li v-if="storeLogin.number == 0"><hr class="dropdown-divider" /></li>
+              <li v-if="storeLogin.number == 0">
                 <router-link
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"
@@ -105,7 +105,7 @@
                   >Register Rent</router-link
                 >
               </li>
-              <li v-if="storeLogin.number = 0">
+              <li >
                 <router-link
                   class="dropdown-item"
                   :class="{ disabled: !storeLogin.loginSuccess }"

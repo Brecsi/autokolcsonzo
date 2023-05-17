@@ -4,38 +4,36 @@
     "description": "",
     "main": "serverData.js",
     "scripts": {
-      "dev": "nodemon serverData.js",
-      "devauth": "nodemon serverAuth.js"
+        "dev": "nodemon serverData.js",
+        "devauth": "nodemon serverAuth.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-
     "dependencies": {
-      "bcrypt": "^5.1.0",
-      "cors": "^2.8.5",
-      "dotenv": "^16.0.3",
-      "express": "^4.18.2",
-      "jsonwebtoken": "^9.0.0",
-      "mysql": "^2.18.1",
-      "sanitize-html": "^2.8.1",
-      "core-js": "^3.1.2",
-      "vue": "^2.6.10"
+        "bcrypt": "^5.1.0",
+        "core-js": "^3.1.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.0",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.22",
+        "sanitize-html": "^2.8.1",
+        "vue": "^2.6.10"
     },
-    
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
-  }
-  
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.0.0",
+        "@vue/cli-service": "^4.0.0",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
+}
