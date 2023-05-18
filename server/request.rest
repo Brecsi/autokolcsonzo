@@ -8,7 +8,7 @@ get http://localhost:3000/loaners
 get http://localhost:3000/carsWithLoans
 
 ### get car by id (csak a car tábla)
-get http://localhost:3000/cars/0
+get http://localhost:3000/cars/5
 
 ### get car by id (csak a car tábla)
 get http://localhost:3000/carsWithLoans/3
@@ -56,17 +56,17 @@ Content-Type: application/json
 
 
 ###put user
-put http://localhost:3000/users/4
+put http://localhost:3000/users/3
 Content-Type: application/json
 
 {
-    "firstName": "editor",
-    "lastName": "editor",
+    "firstName": "admin",
+    "lastName": "admin",
     "gender": "male",
-    "userName": "editor",
-    "email": "editor.junkie@gmail.com",
+    "userName": "admin",
+    "email": "admin.junkie@gmail.com",
     "password": "123",
-    "number": 1
+    "number": 0
 }
 
 ###post car
@@ -120,7 +120,7 @@ Content-Type: application/json
 get http://localhost:3000/carsByYear
 
 ###
-get http://localhost:3000/loans
+get http://localhost:3000/loaners
 
 
 ### delete user

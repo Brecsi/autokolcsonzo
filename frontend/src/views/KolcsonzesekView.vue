@@ -3,38 +3,34 @@
     <h1>Manage Rents</h1>
 
     <!-- #Region table -->
-    <table class="table">
+    <table class="table table-bordered">
       <thead>
         <tr>
-          <th scope="col">Loan</th>
-          <th scope="col">Car</th>
-          <th scope="col">Loan start</th>
-          <th scope="col">Number of days</th>
-          <th scope="col" v-if="storeLogin.number == 0 || storeLogin.number == 1">Edit</th>
+          <th>Car</th>
+          <th>Loaner</th>
+          <th>loaner license</th>
+          <th>loaner phone number</th>
+          <th>loan start</th>
+          <th>days loaned</th>
+          <th v-if="storeLogin.number == 0">Edit</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th scope="row">loan.id</th>
-          <td>car.type</td>
-          <td>loan.loanstart</td>
-          <td>loan.numberOfDays</td>
-        </tr>
-        <tr>
-          <th scope="row">loan.id</th>
-          <td>car.type</td>
-          <td>loan.loanstart</td>
-          <td>loan.numberOfDays</td>
-        </tr>
-        <tr>
-          <th scope="row">loan.id</th>
-          <td>car.type</td>
-          <td>loan.loanstart</td>
-          <td>loan.numberOfDays</td>
-          <button class="btn btn-dark"><i class="bi bi-pencil-fill"></i></button>
+      <tbody v-for="(car, index) in carsWithLoans" :key="`car${index}`">
+        <tr v-for="(loaner, index) in loaners" :key="`loaner${index}`">
+            <td>{{ car.type }}</td>
+            <td>{{ loaner.name }}</td>
+            <td>{{ loaner.licenseNum }}</td>
+            <td>+36 {{ loaner.phoneNum }}</td>
+            <td>{{ car.loanStart }}</td>
+            <td>{{ car.numberOfDays }}</td>
+            <td v-if="storeLogin.number == 0">
+              <button type="button" class="btn btn-primary btn-sm ms-2 w-auto" @click="onClickEdit(user.id)">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </td>
         </tr>
       </tbody>
-    </table>
+    </table> 
     <!-- #Endregion table -->
   </div>
 </template>
@@ -67,18 +63,140 @@ export default {
     return {
       storeUrl,
       storeLogin,
+      carsWithLoans: [],
       loans: [],
-      editableLoans: new Loan(),
+      loaners: [],
+      editableLoan: new Loan(),
       modal: null,
       form: null,
       state: "view",
     };
   },
-}
+  mounted(){
+    this.getCarsWithLoans();
+    this.getLoans();
+    this.getLoaners();
+  },
+  methods: {
+    // urlCarsWithLoans
+    async getCarsWithLoans() {
+      let url = this.storeUrl.urlCarsWithLoans;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.carsWithLoans = data.data;
+    },
 
-// cars (get)
-// loans (get, put, post)
-// cars with loans (get)
+    async getCarsWithLoansById(id) {
+      let url = `${this.storeUrl.urlCarsWithLoans}/${id}`;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.carsWithLoans = data.data[0];
+    },
+    async getLoans() {
+      let url = this.storeUrl.urlLoans;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.loans = data.data;
+    },
+    async getLoanById(id) {
+      let url = `${this.storeUrl.urlLoans}/${id}`;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.editableLoan = data.data[0];
+    },
+    async postLoan() {
+      let url = this.storeUrl.urlLoans;
+      const body = JSON.stringify(this.editableLoan);
+      const config = {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+        body: body,
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      console.log(data.data);
+      this.getLoans();
+    },
+    async putLoan() {
+      const id = this.editableLoan.id;
+      let url = `${this.storeUrl.urlLoans}/${id}`;
+      const body = JSON.stringify(this.editableLoan);
+      const config = {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+        body: body,
+      };
+      const response = await fetch(url, config);
+      this.getLoans();
+    },
+    async deleteLoan(id) {
+      let url = `${this.storeUrl.urlLoans}/${id}`;
+      const config = {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      this.getLoans();
+    },
+    async getLoaners() {
+      let url = this.storeUrl.urlLoaners;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.loaners = data.data;
+    },
+    async getLoanerById(id) {
+      let url = `${this.storeUrl.urlLoaners}/${id}`;
+      const config = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      const data = await response.json();
+      this.editableLoan = data.data[0];
+    },
+  }
+}
 // functionality (buttons)
 </script>
 
